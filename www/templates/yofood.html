@@ -1,0 +1,98 @@
+<ion-view view-title="YO FOOD">
+  <div class="bar bar-subheader bar-energized">
+    <label class="item item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input id="pac-input" type="text" placeholder="Search food..." data-tap-disabled="true">
+    </label>
+  </div>
+  <ion-content>
+    <div id="mapfood">
+    
+      
+    </div>
+<div>
+  <ion-tabs class="tabs-top tabs-striped">
+    <ion-tab title="Nearby" class="positive">
+      <ion-nav-view name="tab-problems">
+        <ion-view>
+          <ion-content>
+            <div class="list">
+              <ul class="list" id="places"></ul>
+            </div>
+            <button class="button button-full button-icon icon ion-loop" id="more"></button>
+          </ion-content>
+        </ion-view>
+      </ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="Popular" class="positive">
+      <ion-nav-view name="tab-ok">
+        <ion-view view-title="Injoignable">
+          <ion-content class="">
+            <ion-slides align='center' style="height: 30%; margin-top: 10%" options="options" slider="data.slider" does-continue="true">
+      <ion-slide-page ng-repeat="slides in slide">
+          <div class="box {{slides.background}}">
+            <img  ng-src="{{slides.face}}" class="imgBg" style="width: 100%">
+          </div>
+        </ion-slide-page>
+    </ion-slides>
+          </ion-content>
+        </ion-view>       
+      </ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="My Recent" class="positive">
+      <ion-nav-view name="tab-ok">
+        <ion-view view-title="En attente">
+          <ion-content class="">
+
+          </ion-content>
+        </ion-view>       
+      </ion-nav-view>
+    </ion-tab>
+  </ion-tabs>
+    
+      <!-- <ion-tabs class="tabs-color-positive tabs-top tabs-striped">
+          <ion-tab title="Nearby">
+            <ion-tab-header>
+            </ion-tab-header>
+            <ion-content class="has-header">
+              <label class="item item-input">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input id="pac-input" type="text" placeholder="Search food..." data-tap-disabled="true">
+              </label>
+              <ion-list>
+                <div ng-repeat="d in data" class="card" align="center" style="margin-bottom: 10px;">
+                  <div class="item item-body" style="vertical-align:middle; background-image: url('{{d.bg}}'); background-size: 100%; background-color: transparent;margin:0;">
+                    <div style="width:100%;background: rgba(119, 119, 119, 0.34); position: relative; z-index: 1;margin:0;">
+                      <h1 style="color: #fff; text-shadow: 1px 1px #000;">{{d.title}}</h1>
+                      <p style="color: #fff; text-shadow: 1px 1px #000;">{{d.desc}}</p>
+                    </div>
+                  </div>
+                </div>
+              </ion-list>
+            </ion-content>
+          </ion-tab>
+          <ion-tab title="Popular">
+            <ion-tab-header></ion-tab-header>
+            <ion-content class="has-header">
+              <ion-slides align='center' style="height: 30%" options="options" slider="data.slider" does-continue="true">
+                <ion-slide-page ng-repeat="slides in slide">
+                    <div class="box {{slides.background}}">
+                      <img  ng-src="{{slides.face}}" class="imgBg" style="width: 100%">
+                    </div>
+                  </ion-slide-page>
+              </ion-slides>
+            </ion-content>
+          </ion-tab>
+          <ion-tab title="My Recent">
+            <ion-tab-header></ion-tab-header>
+            <ion-content class="has-header">
+              This is news
+            </ion-content>
+          </ion-tab>
+        </ion-tabs> -->
+      </div>
+
+  </ion-content>
+</ion-view>

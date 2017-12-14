@@ -1,0 +1,21 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Search</h1>
+    <div class="buttons">
+      <button class="button button-clear button-dark" ng-click="closeModal()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">From</span>
+        <!-- <input type="text" ng-model="dari" id="inpurdari"> -->
+        <input id="inpurdari" type="text" placeholder="Dari">
+      </label>
+      <ul class="list" id="places"></ul>
+    </div>
+      <button class="button button-full button-icon icon ion-loop" id="more"></button>
+    <form ng-submit="doLogin()">
+    </form>
+  </ion-content>
+</ion-modal-view>

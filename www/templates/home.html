@@ -1,0 +1,32 @@
+<ion-view>
+  <ion-content scroll="false">
+      <ion-slides align='center' style="height: 93.5%" options="options" slider="data.slider" does-continue="true">
+        <ion-slide-page>
+            <div class="box energized-bg">
+                <img  ng-src="{{face}}" class="imglogo avatar" style="margin-bottom: 20%; margin-top: 50%; width: 50%">
+                <h4>KEBEBASAN UNTUK HIDUP MU</h4>
+                <p>Ayo bergabung dengan YOJEK</p>
+                
+            </div>
+          </ion-slide-page>
+          <ion-slide-page>
+            <div class="box energized-bg">
+              <img  ng-src="{{face2}}" class="imglogo avatar" style="margin-bottom: 10%; margin-top: 50%; width: 30%">
+                <h4>KEBEBASAN UNTUK MENGATUR PENGHASILAN</h4>
+                <p>dengan pilihan tunai atau kredit, dapatkan lebih banyak penghasilan dengan menjadi driver YOJEK.</p>
+            </div>
+          </ion-slide-page>
+          <ion-slide-page>
+            <div class="box energized-bg">
+              <img  ng-src="{{face}}" class="imglogo avatar" style="margin-bottom: 10%; margin-top: 50%; width: 30%">
+                <h4>KEBEBASAN UNTUK MENGEJAR MIMPI</h4>
+                <p>Kebebasan dalam mengatur jadwal kerja, luangkan waktu untuk momen berharga anda.</p>
+            </div>
+          </ion-slide-page>
+        </ion-slides>
+  </ion-content>
+  <div align="center" class="bar bar-footer bar-energized">
+    <button class="button button-outline button-dark" ng-click="login()" style="width: 45%">Sign in</button>
+    <button class="button button-dark" ng-click="regist()" style="width: 45%">Sign Up</button>
+  </div>
+</ion-view>

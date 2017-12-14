@@ -1,0 +1,160 @@
+/* Empty. Add your own CSS if you like */
+.imglogo{
+	width:20%;
+}
+
+.imgBg{
+  width:100%;
+}
+
+#loginFontfooter{
+	font-size: 11px;
+}
+
+#Fontfooter{
+  font-size: 12px;
+}
+
+#loginFontforget{
+	font-size: 11px;
+}
+
+#Absolute-Center {
+      width: 100%;
+      height: 100%;
+      margin-top: 10%;
+/*      overflow: auto;*/
+      /*margin: auto;*/
+/*      position: absolute;*/
+      /*top: 100; left: 0; bottom: 0; right: 0;*/
+}
+
+i.ion-social-buffer-outline {
+	font-size: 50px;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+
+.video-container iframe, .video-container object, .video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.menu .bar.bar-header.expanded {
+    transition: all .5s ease-in-out;
+}
+
+.menu-open .bar.bar-header.expanded {
+    background-color: #222;
+}
+
+.scroll {
+    height: 100%;
+}
+ 
+#map {
+    width: 100%;
+    height: 85%;
+}
+
+#pac-input {
+  /*background-color: #fff;*/
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 90%;
+  color: #000;
+  /*box-shadow:2px 2px 4px #d5d5d5d5;*/
+}
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+#tuj-input {
+  /*background-color: #fff;*/
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 90%;
+  /*box-shadow:2px 2px 4px #d5d5d5d5;*/
+}
+
+#search {
+  width: 100%;
+  margin-left: 5%;
+  /*box-shadow:2px 2px 4px #d5d5d5d5;*/
+}
+
+/*.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}*/
+
+
+/*.bar.bar-energized {
+      background-color:none; rgba(255,255,255,.0) !important;
+    }
+.scroll-content {
+      overflow: visible !important;
+    }*/
+.box{
+  height: 100%;
+  width: 100%;
+}
+
+.card {
+  /*background-color: transparent;*/
+  /*background-color: rgba(255, 255, 255, 0.2);*/
+  margin-bottom: 1%;
+  margin-top: 10%;
+}
+
+/*.card .btn .item{
+  background-color: transparent;
+  border-color: #ffc900;
+}*/
+.bgdash {
+  
+  background-image: url('../img/bg1.png');
+}
+
+.bgcntn {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/*.card .btn:hover{
+   background-color:#d0d0d0;
+}*/
+
+#box-bg_ {
+  /*position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 1;*/
+  background-position: center;
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+  border: 1px solid blue;
+}

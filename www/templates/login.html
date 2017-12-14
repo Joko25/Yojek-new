@@ -1,0 +1,23 @@
+<ion-view>
+  <ion-content class="padding" align='center'>
+      <div class="list">
+          <img  ng-src="{{face}}" class="imglogo avatar" style="margin-bottom: 10%; margin-top: 10%">
+          <br>
+          <label class="item item-input">
+            <input type="text" placeholder="Username" ng-model="data.username">
+          </label>
+          <label class="item item-input">
+            <input type="password" placeholder="Password" ng-model="data.password">
+          </label>
+          <button class="button button-block button-dark" ng-click="login()">Sign in</button>
+          <span id="loginFontforget">forget your login details? <strong><a ng-click="forget()">Get help login</a></strong></span>
+          <div>or</div>
+          <button class="google-sign-in button button-outline button-clear button-assertive" ng-click="googleSignIn()"><i class="ion-social-googleplus-outline"></i> Sign in with Google</button>
+          <div>
+          </div>
+      </div>
+  </ion-content>
+  <div align="center" class="bar bar-footer bar-energized">
+    <span class="title" id="loginFontfooter">Don't have an account? <strong><a ng-click="regist()">Signup</a></strong></span>
+  </div>
+</ion-view>

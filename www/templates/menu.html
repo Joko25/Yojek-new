@@ -1,0 +1,49 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-energized" align-title="center" style="width: 200%"><!-- bar-transparent -->
+      <ion-nav-back-button class="no-text">
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+
+     <!--  <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-android-more-vertical" menu-toggle="left">
+        </button>
+      </ion-nav-buttons> -->
+
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" ></ion-nav-view> <!-- ng-class="{expanded: isExpanded}" -->
+  </ion-side-menu-content>
+  <ion-side-menu side="left" class="energized-bg" scroll="false">
+      <div class="row">
+        <div class="col col-top"></div>
+        <div class="col col-center">
+          <img src="img/lg2.png" width="100%" >
+        </div>
+        <div class="col col-bottom"></div>
+      </div> 
+    <ion-header-bar class="bar-transparent" align="center">
+      <!-- <div style="background: url('img/lg.png'); background-size: cover;" style="width: 50%">a</div> -->
+      <!-- <h1 class="title">Menu</h1> -->
+        <!-- <p>
+          <span class="avatar" style="background: url('img/zebo.png'); background-size: cover;"></span>
+          <span>a</span>
+        </p> -->
+    </ion-header-bar>
+    <ion-content class="stable-bg has-expanded-header" style="margin-top: 40%">
+      <div >
+        <ion-list >
+          <ion-item menu-close href="#/app/dash">
+            Home
+          </ion-item>
+          <ion-item menu-close ng-click="logout()">
+            Logout
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

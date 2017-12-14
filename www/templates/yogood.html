@@ -1,0 +1,35 @@
+<ion-content>
+  <!-- <div class="controls" id="search">
+    <button class="button button-icon ion-chevron-left" ng-click="goBack()"> Back</button>
+    <div class="list">
+      <label class="item item-input" style="width: 90%;">
+        <i class="icon ion-ios-location placeholder-icon"></i>
+        <input id="pac-input" type="text" placeholder="Search Location" data-tap-disabled="true" ng-change='disableTap()' ng-model="search1">
+        <button ng-click="search1 = ''" class="button button-small icon ion-android-close" ng-show="search1.length" style="background-color: #fff;"></button>
+      </label>
+      <label class="item item-input" style="width: 90%;">
+        <i class="icon ion-ios-navigate placeholder-icon"></i>
+        <input id="tuj-input" type="text" placeholder="Tujuan" ng-model="input2" ng-change="disableTap2()"> 
+        <button ng-click="input2 = ''" class="button button-small icon ion-android-close" style="background-color: #fff;" ng-show="input2.length"></button>
+        <button ng-click="goMap()" class="button button-small icon ion-android-send" style="background-color: #fff;" ng-show="input2.length"></button>
+        <button ng-click="onSearchChange1()" class="button button-small icon ion-android-clipboard" style="background-color: #fff;" ng-hide="input2.length"></button>
+      </label>
+    </div>
+	</div> -->
+  <div id="mapGoods" data-tap-disabled="true"></div>
+</ion-content>
+<div class="bar bar-footer bar-stable" style="height: 15%">
+  <div class="row" style="padding: 0; margin: 0;">
+    <div class="col col-100">
+      <div class="row" style="padding: 0; margin: 0;">
+        <div class="col" >
+    		  <span>Tarif : </span>
+        </div>
+        <div class="col" align="right" id="tarif">
+          {{tarif}}
+        </div>
+      </div>
+      <button class="button button-full button-energized icon icon-left ion-navigate">ORDER</button>
+    </div>
+  </div>
+</div>

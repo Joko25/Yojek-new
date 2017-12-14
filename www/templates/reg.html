@@ -1,0 +1,36 @@
+<ion-view>
+<div class="bar bar-header bar-energized">
+  <div side="left">
+    <button class="button button-clear" ng-click="goBack()" >
+    <i class="icon ion-ios-arrow-back"></i></button>
+  </div>
+  <h1 class="title">Registration</h1>
+</div>
+  <ion-content class="padding" align='center'>
+      <div class="list" id="Absolute-Center">
+          <!-- <img ng-src="{{face}}" class="imglogo"> -->
+
+          <i class="icon ion-social-buffer-outline"></i>
+          <hr/>
+          <label class="item item-input">
+              <input type="email" placeholder="contoh@email.com" ng-model="data.email" required>
+          </label>
+          <label class="item item-input">
+              <input type="text" placeholder="Username" ng-model="data.username" required>
+          </label>
+          <label class="item item-input">
+              <input type="text" placeholder="Full Name" ng-model="data.name" required>
+          </label>
+          <label class="item item-input">
+              <input type="password" placeholder="Password" ng-model="data.password" required>
+          </label>
+            
+          <div style="margin-top: 10%;">
+            <span id="loginFontfooter">Dengan klik "DAFTAR", <br>mengonfirmasi bahwa saya sudah membaca dan menyetujui <br><span class="energized">Syarat & Ketentuan </span> dan <span class="energized">Kebijakan Privasi.</span>
+          </div>
+      </div>
+  </ion-content>
+  <div align="center" class="bar bar-footer bar-energized">
+    <span class="title""><strong><a href="#" ng-click="regist()">DAFTAR</a></strong></span>
+  </div>
+</ion-view>
