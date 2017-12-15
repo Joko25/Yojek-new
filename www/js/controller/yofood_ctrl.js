@@ -2,6 +2,7 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
   var latLng='';
   var options = {timeout: 10000, enableHighAccuracy: true};
   var map;
+  // $scope.place = [];
   $scope.options = {
       loop: false,
       effect: 'fade',
@@ -60,7 +61,7 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
     service.nearbySearch({
       location: latLng,
       radius: 500,
-      type: ['food']
+      type: ['restaurant']
     }, processResults);
 
     function processResults(results, status, pagination) {
@@ -69,6 +70,7 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
         } else {
           createMarkers(results);
           //console.log(results);
+          // $scope.place = results;
 
           if (pagination.hasNextPage) {
             var moreButton = document.getElementById('more');
@@ -78,36 +80,44 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
             moreButton.addEventListener('click', function() {
               moreButton.disabled = true;
               pagination.nextPage();
+              // $scope.place+=results;
+
+              console.log($scope.place);
             });
           }
         }
     }
 
+    $scope.place = [];
     function createMarkers(places) {
-        //var bounds = new google.maps.LatLngBounds();
-      var placesList = document.getElementById('places');
 
-      $scope.place = [];
       for (var i = 0, place; place = places[i]; i++) {
-        var poto = place.photos;
-
-        if (poto == 'undefined' || poto == undefined) {
-          poto = "<a class='item item-avatar'> <img src='"+place.icon+"' /> <h2>" + place.name + "</h2> <p>"+place.vicinity+" </p></a>";
-        }else{
-          console.log(place);
-          //poto = place.photos[0].getUrl;//place.photos[0].getUrl["[[BoundArgs]]"];//["0"].photos["0"].getUrl["[[BoundArgs]]"]["0"]=["0"].photos["0"].getUrl["[[TargetFunction]]"]
-          var potoUrl = place.photos[0].getUrl({maxWidth: 400, maxHeight: 400});
-          poto = "<a class='item item-avatar'> <img src='"+potoUrl+"' /> <h2>" + place.name + "</h2> <p>"+place.vicinity+" </p></a>";
-          console.log(poto);
-        }
-
-        placesList.innerHTML += poto;//"<a class='item item-avatar'> <img src='"+place.icon+"' /> <h2>" + place.name + "</h2> <p>"+poto+" </p></a>";
-          
-          //bounds.extend(place.geometry.location);
-          //sc
+        // var poto = place.photos;
+        $scope.place.push(place);
+        console.log(place);
       }
-        //map.fitBounds(bounds);
     }
 
   });
+
+
+  $scope.yoFood = function(id){
+    console.log(id);
+
+    var infowindow = new google.maps.InfoWindow();
+    var service = new google.maps.places.PlacesService(map);
+
+    service.getDetails({
+      placeId: id
+    }, function(place, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+       // var marker = new google.maps.Marker({
+       //   map: map,
+       //   position: place.geometry.location
+       // });
+       console.log(place.photos);
+     }
+    });
+
+  }
 });

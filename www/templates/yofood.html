@@ -1,14 +1,12 @@
 <ion-view view-title="YO FOOD">
   <div class="bar bar-subheader bar-energized">
-    <label class="item item-input-wrapper">
-      <i class="icon ion-ios-search placeholder-icon"></i>
-      <input id="pac-input" type="text" placeholder="Search food..." data-tap-disabled="true">
+    <label class="item item-input" style="width: 100%">
+              <i class="icon ion-ios-search placeholder-icon"></i>
+              <input ng-model="q" type="text" placeholder="Search food..." data-tap-disabled="true">
     </label>
   </div>
   <ion-content>
     <div id="mapfood">
-    
-      
     </div>
 <div>
   <ion-tabs class="tabs-top tabs-striped">
@@ -16,9 +14,36 @@
       <ion-nav-view name="tab-problems">
         <ion-view>
           <ion-content>
-            <div class="list">
-              <ul class="list" id="places"></ul>
+            <div ng-repeat="d in place | filter:q as name" class="card" align="center" style="margin-bottom: 10px;">
+
+              <div ng-click="yoFood('{{d.place_id}}')" ng-if="d.photos[0] !== undefined" class="item item-body" style="vertical-align:middle; background-image: url('{{d.photos[0].getUrl({maxWidth: 1000, maxHeight: 400})}}'); background-size: 100%; background-color: transparent;margin:0; padding: 0">
+                <div style="width: 10%; background-color: #FFD700; position: absolute;">
+                  <span>{{d.rating}}</span>
+                </div>
+                <div style="width: 10%; background-color: #FFD700; position: absolute;" ng-if="d.rating === undefined">
+                  <span>0</span>
+                </div>
+                <div style="width:100%;background: rgba(119, 119, 119, 0.7); padding: 1%; margin-top: 30%"> 
+                  <span style="color: #fff; font-size: 16px">{{d.name}}</span>
+                  <p style="color: #fff; font-size: 11px">{{d.vicinity}}</p>
+                </div>
+              </div>
+
+              <div ng-click="yoFood('{{d.place_id}}')" ng-if="d.photos[0] === undefined" class="item item-body" style="vertical-align:middle; background-image: url('{{d.icon}}');margin:0; padding: 0">
+                <div style="width: 10%; background-color: #FFD700; position: absolute;">
+                  <span>{{d.rating}}</span>
+                </div>
+                <div style="width: 10%; background-color: #FFD700; position: absolute;" ng-if="d.rating === undefined">
+                  <span>0</span>
+                </div>
+                  <!-- <span>'{{d.photos[0]}}'</span> -->
+                <div style="width:100%;background: rgba(119, 119, 119, 0.7); padding: 1%; margin-top: 30%"> 
+                  <span style="color: #fff; font-size: 16px">{{d.name}}</span>
+                  <p style="color: #fff; font-size: 11px">{{d.vicinity}}</p>
+                </div>
+              </div>
             </div>
+
             <button class="button button-full button-icon icon ion-loop" id="more"></button>
           </ion-content>
         </ion-view>
@@ -30,12 +55,12 @@
         <ion-view view-title="Injoignable">
           <ion-content class="">
             <ion-slides align='center' style="height: 30%; margin-top: 10%" options="options" slider="data.slider" does-continue="true">
-      <ion-slide-page ng-repeat="slides in slide">
-          <div class="box {{slides.background}}">
-            <img  ng-src="{{slides.face}}" class="imgBg" style="width: 100%">
-          </div>
-        </ion-slide-page>
-    </ion-slides>
+              <ion-slide-page ng-repeat="slides in slide">
+                  <div class="box {{slides.background}}">
+                    <img  ng-src="{{slides.face}}" class="imgBg" style="width: 100%">
+                  </div>
+                </ion-slide-page>
+            </ion-slides>
           </ion-content>
         </ion-view>       
       </ion-nav-view>
