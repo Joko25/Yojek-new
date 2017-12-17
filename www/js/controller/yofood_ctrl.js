@@ -1,7 +1,11 @@
-app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ionicModal) {
+app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ionicModal, $ionicLoading) {
   var latLng='';
   var options = {timeout: 10000, enableHighAccuracy: true};
   var map;
+
+  $scope.closeq = function(){
+    alert('asdf');
+  };
   // $scope.place = [];
   $scope.options = {
       loop: false,
@@ -9,6 +13,13 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
       speed: 500,
       autoplay:3500
   };
+
+  $ionicLoading.show({
+      template: '<ion-spinner icon="android"></ion-spinner>'
+      //duration: 1000
+    }).then(function(){
+       //console.log("The loading indicator is now displayed");
+  });
   
   $scope.slide = [{
     background: 'light-bg',
@@ -94,7 +105,11 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
       for (var i = 0, place; place = places[i]; i++) {
         // var poto = place.photos;
         $scope.place.push(place);
-        console.log(place);
+        // console.log(place);
+        // console.log($scope.place.length+' '+i);
+        // if (i == $scope.place.length) {
+          $ionicLoading.hide();
+        // }
       }
     }
 
@@ -115,7 +130,10 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
        //   map: map,
        //   position: place.geometry.location
        // });
-       console.log(place.photos);
+
+       for (var i = 0; i < place.photos.length; i++) {
+        console.log(place.photos[i].getUrl({maxWidth: 1000, maxHeight: 400}));
+       }
      }
     });
 

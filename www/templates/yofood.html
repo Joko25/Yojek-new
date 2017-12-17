@@ -1,9 +1,11 @@
 <ion-view view-title="YO FOOD">
   <div class="bar bar-subheader bar-energized">
-    <label class="item item-input" style="width: 100%">
-              <i class="icon ion-ios-search placeholder-icon"></i>
-              <input ng-model="q" type="text" placeholder="Search food..." data-tap-disabled="true">
+    <label class="item item-input" style="width: 90%">
+      <i class="icon ion-android-search placeholder-icon"></i>
+      <input ng-model="q" type="text" placeholder="Search food..." data-tap-disabled="true" />
+      <button ng-click="closeq()" class="button button-small button-clear icon ion-android-close" ng-show="q.length" style="color: black; background-color: #fff; font-size: 11px;"></button>
     </label>
+    <button ng-click="closeq()" class="button button-icon icon ion-android-funnel"></button>
   </div>
   <ion-content>
     <div id="mapfood">

@@ -1,4 +1,4 @@
-app.controller('loginCtrl', function($scope, $state, $http, $ionicPopup, Firebase, $ionicLoading, md5, $window, $ionicLoading, UserService) {
+app.controller('loginCtrl', function($scope, $state, $http, $ionicPopup, Firebase, md5, $window, $ionicLoading, UserService) {
   $scope.data = {};
   $scope.face = 'img/icon.png';
 
@@ -34,8 +34,15 @@ app.controller('loginCtrl', function($scope, $state, $http, $ionicPopup, Firebas
       // });
 
       usersRef.on("value", function(snapshot){
-       console.log(snapshot.val().password);
+       console.log(snapshot.val());
 
+       if (snapshot.val() == null) {
+        $ionicLoading.hide();
+        var alertPopup = $ionicPopup.alert({
+            title: 'Login error!',
+            template: "Username or password is wrong"
+          });
+       }else{
         if (snapshot.val().password == md5.createHash(password)) {
           $ionicLoading.hide();
           $state.go("app.dash");
@@ -58,8 +65,16 @@ app.controller('loginCtrl', function($scope, $state, $http, $ionicPopup, Firebas
           });
           $ionicLoading.hide();
         }
+        
+       }
+
       }, function(error){
         console.log("Error: "+error.code);
+        $ionicLoading.hide();
+        var alertPopup = $ionicPopup.alert({
+            title: 'Login error!',
+            template: "Username or password is wrong"
+          });
       });
 
       //console.log("LOGIN user: " + userLog + " - PW: " + passLog);
