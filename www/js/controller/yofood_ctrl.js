@@ -1,11 +1,50 @@
-app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ionicModal, $ionicLoading) {
+app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ionicModal, $ionicLoading, $ionicScrollDelegate) {
   var latLng='';
   var options = {timeout: 10000, enableHighAccuracy: true};
   var map;
+  var service;
+  $scope.sttButton=false;
+  var top = 0;
+  $scope.noMoreItemsAvailable = false;
+  var totalLoad = 0;
 
   $scope.closeq = function(){
-    alert('asdf');
+    //alert('asdf');
   };
+
+
+
+  $scope.getScrollPosition = function() {
+    //monitor the scroll
+    var moveData = $ionicScrollDelegate.getScrollPosition();
+    var currentTop = $ionicScrollDelegate.getScrollPosition().top;
+    var maxTop = $ionicScrollDelegate.getScrollView(); //.__maxScrollTop
+    //console.log(maxTop);
+
+      if(top>20){
+          $scope.sttButton=true;
+          //console.log($scope.sttButton);
+        $scope.$apply(function(){
+        });//apply
+      }else{
+          $scope.sttButton=false;
+        $scope.$apply(function(){
+        });//apply
+      }
+
+      //console.log(top);
+
+      top = top + 1;
+  };
+
+  $scope.scrollToTop = function() { //ng-click for back to top button
+    $ionicScrollDelegate.scrollTop();
+    $scope.sttButton=false;  //hide the button when reached top
+    top = 0;
+  };
+
+
+
   // $scope.place = [];
   $scope.options = {
       loop: false,
@@ -68,52 +107,71 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
 
     map = new google.maps.Map(document.getElementById("mapfood"), mapOptions);
     
-    var service = new google.maps.places.PlacesService(map);
+    service = new google.maps.places.PlacesService(map);
     service.nearbySearch({
       location: latLng,
       radius: 5000,
       type: ['restaurant']
     }, processResults);
 
-    function processResults(results, status, pagination) {
-        if (status !== google.maps.places.PlacesServiceStatus.OK) {
-          return;
-        } else {
-          createMarkers(results);
-          //console.log(results);
-          // $scope.place = results;
+    
 
-          if (pagination.hasNextPage) {
-            var moreButton = document.getElementById('more');
+  });
 
-            moreButton.disabled = false;
+  var page;
 
-            moreButton.addEventListener('click', function() {
-              moreButton.disabled = true;
-              pagination.nextPage();
-              // $scope.place+=results;
+  function processResults(results, status, pagination) {
+      if (status !== google.maps.places.PlacesServiceStatus.OK) {
+        return;
+      } else {
+        createMarkers(results);
+        console.log(pagination);
+        // $scope.place = results;
+       if (pagination.hasNextPage) {
+        page = pagination;
 
-              console.log($scope.place);
-            });
-          }
+        // totalLoad = totalLoad + $scope.place.length;
+        // console.log(totalLoad);
+
+        
+
+          // $scope.loadMore = function(){
+          //   //alert('asdf');
+          //   console.log('more');
+          //    pagination.nextPage();
+          //   // $scope.$broadcast('scroll.infiniteScrollComplete');
+          // };
+          // $scope.$broadcast('scroll.infiniteScrollComplete');
+          // $scope.place = [];
+        // var moreButton = document.getElementById('more');
+        //  moreButton.disabled = false;
+        //  moreButton.addEventListener('click', function() {
+        //     moreButton.disabled = true;
+        //     pagination.nextPage();
+        //     // $scope.place+=results;
+        //    console.log($scope.place);
+        //   });
         }
-    }
+      }
+  }
 
-    $scope.place = [];
-    function createMarkers(places) {
+  $scope.place = [];
+  function createMarkers(places) {
 
-      for (var i = 0, place; place = places[i]; i++) {
+    for (var i = 0, place; place = places[i]; i++) {
         // var poto = place.photos;
-        $scope.place.push(place);
+      $scope.place.push(place);
         // console.log(place);
         // console.log($scope.place.length+' '+i);
         // if (i == $scope.place.length) {
-          $ionicLoading.hide();
+        $ionicLoading.hide();
         // }
+        console.log($scope.place.length-1);
+      if (i == ($scope.place.length-1)) {
+        $scope.noMoreItemsAvailable = true;
       }
     }
-
-  });
+  };
 
 
   $scope.yoFood = function(id){
@@ -137,5 +195,42 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
      }
     });
 
-  }
+  };
+
+  $scope.doRefresh = function() {
+
+    $scope.place = [];
+        
+    console.log('Refreshing!');
+    service.nearbySearch({
+      location: latLng,
+      radius: 5000,
+      type: ['restaurant']
+    }, processResults);
+    //$timeout( function() {
+
+        // $scope.items.push('New Item ' + Math.floor(Math.random() * 1000) + 4);
+        // $scope.items.push('New Item ' + Math.floor(Math.random() * 1000) + 4);
+        // $scope.items.push('New Item ' + Math.floor(Math.random() * 1000) + 4);
+        // $scope.items.push('New Item ' + Math.floor(Math.random() * 1000) + 4);
+
+        //Stop the ion-refresher from spinning
+        $scope.$broadcast('scroll.refreshComplete');
+        
+    //}, 1000);
+        
+  };
+
+  // if ( $scope.place.length == totalLoad ) {
+  //   $scope.noMoreItemsAvailable = true;
+  // }
+
+  $scope.loadMore = function(){
+            //alert('asdf');
+    console.log('more');
+    page.nextPage();
+    $scope.$broadcast('scroll.infiniteScrollComplete');
+  };
+
+
 });

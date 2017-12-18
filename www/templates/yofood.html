@@ -15,7 +15,13 @@
     <ion-tab title="Nearby" class="positive">
       <ion-nav-view name="tab-problems">
         <ion-view>
-          <ion-content>
+          <ion-content on-scroll="getScrollPosition()">
+            <ion-refresher on-refresh="doRefresh()"
+                     pulling-text="Pull to refresh..."
+                     refreshing-text="Refreshing!"
+                     refreshing-icon="ion-loading-c">
+                     
+            </ion-refresher>
             <div ng-repeat="d in place | filter:q as name" class="card" align="center" style="margin-bottom: 10px;">
 
               <div ng-click="yoFood('{{d.place_id}}')" ng-if="d.photos[0] !== undefined" class="item item-body foodcard" style="background-image: url('{{d.photos[0].getUrl({maxWidth: 1000, maxHeight: 400})}}');">
@@ -50,8 +56,18 @@
               </div>
             </div>
 
-            <button class="button button-full button-icon icon ion-loop" id="more"></button>
+            <!-- <button class="button button-full button-icon icon ion-loop" id="more" ng-click="loadMore()"></button> -->
+            <ion-infinite-scroll ng-if="noMoreItemsAvailable" on-infinite="loadMore()" distance="451px" > </ion-infinite-scroll>
+            <!-- <button ng-click="scrollToTop()"></button> -->
           </ion-content>
+
+          <div class="button button-float energized-bg" ng-show="sttButton" ng-click="scrollToTop()" > <!-- ng-show="sttButton" -->
+            <span class="height-fix">
+              <a class="content">
+                <i class="ion-ios-arrow-up"> </i>
+              </a>
+            </span>
+          </div>
         </ion-view>
       </ion-nav-view>
     </ion-tab>
