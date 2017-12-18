@@ -8,6 +8,7 @@ app.controller('dashCtrl', function($scope, $state, $cordovaGeolocation, $window
   }
   $scope.yoFood  = function(){
     $state.go("app.yofood");
+    $window.location.reload(true);
   }
   $scope.yoMart  = function(){
     $state.go("app.yomart");

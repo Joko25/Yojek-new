@@ -71,7 +71,7 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
     var service = new google.maps.places.PlacesService(map);
     service.nearbySearch({
       location: latLng,
-      radius: 500,
+      radius: 5000,
       type: ['restaurant']
     }, processResults);
 

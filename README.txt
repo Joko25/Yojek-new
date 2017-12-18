@@ -59,3 +59,5 @@ https://www.google.co.id/search?q=onchangelocation+in+google+maps+api&oq=onchang
 dokumentasi Google Maps Roads API
 
 https://developers.google.com/maps/documentation/javascript/examples/place-details
+
+https://www.w3schools.com/cssref/css_colors.asp
