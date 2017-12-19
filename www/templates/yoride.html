@@ -3,12 +3,12 @@
     <button class="button button-icon ion-chevron-left" ng-click="goBack()"> Back</button>
     <div class="list">
       <label class="item item-input" style="width: 90%;">
-        <i class="icon ion-ios-location placeholder-icon"></i>
+        <i class="icon ion-ios-location placeholder-icon positive" style=""></i>
         <input id="pac-input" type="text" placeholder="Search Location" data-tap-disabled="true" ng-change='disableTap()' ng-model="search1">
         <button ng-click="search1 = ''" class="button button-small icon ion-android-close" ng-show="search1.length" style="background-color: #fff;"></button>
       </label>
       <label class="item item-input" style="width: 90%;">
-        <i class="icon ion-ios-navigate placeholder-icon"></i>
+        <i class="icon ion-ios-navigate placeholder-icon dark"></i>
         <input id="tuj-input" type="text" placeholder="Tujuan" ng-model="input2" ng-change="disableTap2()"> <!-- class="controls" -->
         <button ng-click="input2 = ''" class="button button-small icon ion-android-close" style="background-color: #fff;" ng-show="input2.length"></button>
         <button ng-click="goMap()" class="button button-small icon ion-android-send" style="background-color: #fff;" ng-show="input2.length"></button>
@@ -16,8 +16,13 @@
       </label>
       <!-- <label><button class="button button-energized icon ion-android-navigate"></button></label> -->
     </div>
+
     <!-- <input id="pac-input" type="text" placeholder="Dari" ng-model="input1" ng-change="onSearchChange1()"> -->
-	</div>
+  </div>
+  <div id="marker" align="center" style=" width: 30%; height: 100px; margin-bottom: 15%" >
+    <button class="button button-small button-dark" ng-click="setMap()">SET LOCATION</button>
+    <img src="img/marker.png" style="width: 32%; margin-top: 2px;" />
+  </div>
   <div id="map" data-tap-disabled="true"></div>
 </ion-content>
 <div class="bar bar-footer bar-stable" style="height: 15%">

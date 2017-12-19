@@ -18,7 +18,7 @@
           <ion-content on-scroll="getScrollPosition()">
             <ion-refresher on-refresh="doRefresh()"
                      pulling-text="Pull to refresh..."
-                     refreshing-text="Refreshing!"
+                     refreshing-text="Refreshing..."
                      refreshing-icon="ion-loading-c">
                      
             </ion-refresher>
@@ -39,7 +39,7 @@
                 </div>
               </div>
 
-              <div ng-click="yoFood('{{d.place_id}}')" ng-if="d.photos[0] === undefined" class="item item-body foodcard" style="vertical-align:middle; background-image: url('{{d.icon}}');">
+              <div ng-click="yoFood('{{d.place_id}}')" ng-if="d.photos[0] === undefined" class="item item-body foodcard" style="vertical-align:middle; background-image: url('img/default-food.jpg');">
                 <div class="foodrating">
                   <span>{{d.rating}}</span>
                 </div>
@@ -58,10 +58,9 @@
 
             <!-- <button class="button button-full button-icon icon ion-loop" id="more" ng-click="loadMore()"></button> -->
             <ion-infinite-scroll ng-if="noMoreItemsAvailable" on-infinite="loadMore()" distance="451px" > </ion-infinite-scroll>
-            <!-- <button ng-click="scrollToTop()"></button> -->
           </ion-content>
 
-          <div class="button button-float energized-bg" ng-show="sttButton" ng-click="scrollToTop()" > <!-- ng-show="sttButton" -->
+          <div class="button button-float energized-bg" ng-show="sttButton" ng-click="scrollToTop()" >
             <span class="height-fix">
               <a class="content">
                 <i class="ion-ios-arrow-up"> </i>

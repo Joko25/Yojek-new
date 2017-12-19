@@ -211,6 +211,7 @@ app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation
     //console.log(inpurdari);
     var search = document.getElementById('search');
     var inputtuj = document.getElementById('tuj-input');
+    var marker_inv = document.getElementById('marker');
     //var searchDari = new google.maps.places.SearchBox(inpurdari);
     //var searchBox = new google.maps.places.SearchBox(input);
     var autocomplete = new google.maps.places.Autocomplete(input, {
@@ -227,6 +228,7 @@ app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation
 
     map = $scope.map;
     $scope.map.controls[google.maps.ControlPosition.TOP_LEFT].push(search);
+    $scope.map.controls[google.maps.ControlPosition.CENTER].push(marker_inv);
     directionsDisplay.setMap($scope.map);
 
     
@@ -319,7 +321,7 @@ app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation
 
     var icon = {
       url: 'img/marker.png', // url
-      scaledSize: new google.maps.Size(45, 55)
+      scaledSize: new google.maps.Size(35, 40)
     };
 
     // google.maps.event.addListener($scope.map, 'drag', function (event) {
@@ -345,9 +347,10 @@ app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation
         });
       });
 
+      // $scope.map.removeOverlay(marker);
       marker = new google.maps.Marker({
           map: $scope.map,
-          animation: google.maps.Animation.DROP,
+          // animation: google.maps.Animation.DROP,
           position: latLng,
           // icon: new google.maps.MarkerImage('http://maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
           //                                               new google.maps.Size(22,22),
@@ -356,10 +359,38 @@ app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation
           icon:icon,
           shadow: 100,
           zIndex: 999,
-          optimized: false
+          optimized: false,
+          visible: false
       });
+
+      marker.addListener('click', function() {
+        // map.setZoom(8);
+        // map.setCenter(marker.getPosition());
+        marker.setVisible(false);
+        marker_inv.style.display = "block";
+      });
+
+      
      
     });
+
+    $scope.setMap = function(){
+      var cntr = $scope.map.getCenter();
+      if (marker.visible == true) {
+        console.log(marker);
+        console.log(cntr.lng());
+      }else{
+        console.log(marker);
+        marker.setVisible();
+        marker.setPosition($scope.map.getCenter());
+        marker_inv.style.display = "none";
+      }
+
+
+
+
+
+    }
 
     
  

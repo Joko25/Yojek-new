@@ -125,7 +125,7 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
         return;
       } else {
         createMarkers(results);
-        console.log(pagination);
+        //console.log(pagination);
         // $scope.place = results;
        if (pagination.hasNextPage) {
         page = pagination;
@@ -208,15 +208,7 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
       type: ['restaurant']
     }, processResults);
     //$timeout( function() {
-
-        // $scope.items.push('New Item ' + Math.floor(Math.random() * 1000) + 4);
-        // $scope.items.push('New Item ' + Math.floor(Math.random() * 1000) + 4);
-        // $scope.items.push('New Item ' + Math.floor(Math.random() * 1000) + 4);
-        // $scope.items.push('New Item ' + Math.floor(Math.random() * 1000) + 4);
-
-        //Stop the ion-refresher from spinning
         $scope.$broadcast('scroll.refreshComplete');
-        
     //}, 1000);
         
   };
@@ -226,11 +218,9 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
   // }
 
   $scope.loadMore = function(){
-            //alert('asdf');
+    //alert('asdf');
     console.log('more');
     page.nextPage();
     $scope.$broadcast('scroll.infiniteScrollComplete');
   };
-
-
 });
