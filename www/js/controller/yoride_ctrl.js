@@ -212,8 +212,9 @@ app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation
     var search = document.getElementById('search');
     var inputtuj = document.getElementById('tuj-input');
     var marker_inv = document.getElementById('marker');
+    var tocenter = document.getElementById('tocenter');
     //var searchDari = new google.maps.places.SearchBox(inpurdari);
-    //var searchBox = new google.maps.places.SearchBox(input);
+    var searchBox = new google.maps.places.SearchBox(input);
     var autocomplete = new google.maps.places.Autocomplete(input, {
       componentRestrictions: { country: "ID" }
     });
@@ -229,15 +230,30 @@ app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation
     map = $scope.map;
     $scope.map.controls[google.maps.ControlPosition.TOP_LEFT].push(search);
     $scope.map.controls[google.maps.ControlPosition.CENTER].push(marker_inv);
+    $scope.map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(tocenter);
     directionsDisplay.setMap($scope.map);
-
-    
 
     var onChangeHandler = function() {
       calculateAndDisplayRoute(directionsService, directionsDisplay);
       //console.log(directionsService+' '+directionsDisplay);
     };
-    //document.getElementById('pac-input').addEventListener('change', onChangeHandler);
+
+    searchBox.addListener('places_changed', function() {
+      var places = searchBox.getPlaces();
+      console.log(places);
+    });
+
+
+    var makeMark = function(){
+      // alert();
+       var start = document.getElementById('pac-input').value;
+      // var places = searchBox.getPlaces();
+      // console.log(start.place.geometry.location);
+
+
+      // console.log(start);
+    }
+    //document.getElementById('pac-input').addEventListener('change', makeMark);
     //document.getElementById('tuj-input').addEventListener('change', onChangeHandler);
 
     $scope.goMap = function(){
@@ -333,19 +349,19 @@ app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation
       var latitude = latLng.lat();
       var longitude = latLng.lng();
 
-      straddr = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+latitude+','+longitude+'&sensor=true';
-      console.log(straddr);
-      $http.get(straddr)
-      .success(function(response){
-          console.log(response.results[0].formatted_address);
-          $scope.search1 = response.results[0].formatted_address;
-      })
-      .error(function(){
-        var alertPopup = $ionicPopup.alert({
-          title: 'Fild!',
-          template: 'Please check your connection!'
-        });
-      });
+      // straddr = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+latitude+','+longitude+'&sensor=true';
+      // console.log(straddr);
+      // $http.get(straddr)
+      // .success(function(response){
+      //     console.log(response.results[0].formatted_address);
+      //     $scope.search1 = response.results[0].formatted_address;
+      // })
+      // .error(function(){
+      //   var alertPopup = $ionicPopup.alert({
+      //     title: 'Fild!',
+      //     template: 'Please check your connection!'
+      //   });
+      // });
 
       // $scope.map.removeOverlay(marker);
       marker = new google.maps.Marker({
@@ -385,11 +401,6 @@ app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation
         marker.setPosition($scope.map.getCenter());
         marker_inv.style.display = "none";
       }
-
-
-
-
-
     }
 
     

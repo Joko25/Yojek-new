@@ -56,8 +56,11 @@ http://ngcordova.com/docs/plugins/launchNavigator/
 https://developers.google.com/maps/documentation/android-api/intents
 https://stackoverflow.com/questions/35130846/google-maps-api-for-gps-like-navigation
 https://www.google.co.id/search?q=onchangelocation+in+google+maps+api&oq=onchangelocation+in+google+maps+api&aqs=chrome..69i57.36431j0j7&sourceid=chrome&ie=UTF-8
+
 dokumentasi Google Maps Roads API
 
 https://developers.google.com/maps/documentation/javascript/examples/place-details
 
-https://www.w3schools.com/cssref/css_colors.asp
+https://www.w3schools.com/cssref/css_colors.aspx
+
+https://developers.google.com/maps/documentation/geolocation/intro

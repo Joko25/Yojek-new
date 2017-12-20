@@ -23,6 +23,11 @@
     <button class="button button-small button-dark" ng-click="setMap()">SET LOCATION</button>
     <img src="img/marker.png" style="width: 32%; margin-top: 2px;" />
   </div>
+  <div id="tocenter" style="margin: 0 10px 10px 0;">
+    <!-- <button class="button icon ion-gear-a"></button> -->
+    <button class="button icon ion-android-locate positive" style="box-shadow: 2px 2px #d0d0d0;" ng-click="toCenter()"></button>
+  </div>
+
   <div id="map" data-tap-disabled="true"></div>
 </ion-content>
 <div class="bar bar-footer bar-stable" style="height: 15%">
