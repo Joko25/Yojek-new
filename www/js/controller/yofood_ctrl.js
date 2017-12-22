@@ -184,18 +184,32 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
       placeId: id
     }, function(place, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-       // var marker = new google.maps.Marker({
-       //   map: map,
-       //   position: place.geometry.location
-       // });
+       console.log(place);
+       $scope.title = place.name;
+       $scope.slide = place.photos;
+       $scope.address = place.formatted_address;
+       $scope.phone = place.formatted_phone_number;
+       $scope.website = place.website;
+       $scope.opening = place.opening_hours;
+       $scope.review = place.reviews;
 
-       for (var i = 0; i < place.photos.length; i++) {
-        console.log(place.photos[i].getUrl({maxWidth: 1000, maxHeight: 400}));
-       }
+       // for (var i = 0; i < place.photos.length; i++) {
+       //  // console.log(place.photos[i].getUrl({maxWidth: 1000, maxHeight: 400}));
+       // }
+       $scope.modal.show();
      }
     });
 
   };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+    console.log();
+  };
+       $ionicModal.fromTemplateUrl('templates/modal-yofood.html', {
+          scope: $scope
+        }).then(function(modal) {
+          $scope.modal = modal;
+        });
 
   $scope.doRefresh = function() {
 

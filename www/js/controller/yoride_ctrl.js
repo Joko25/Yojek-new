@@ -1,4 +1,4 @@
-app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation, $ionicModal) {
+app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation, $ionicModal, $ionicPopup) {
  var options = {timeout: 10000, enableHighAccuracy: true};
  $scope.tarif = 'Rp. 0';
 
@@ -183,23 +183,28 @@ app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation
       
       calculateAndDisplayRoute(directionsService, directionsDisplay);
     }
-
+    var start='';
     function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-      var start = document.getElementById('pac-input').value;
+      //start = document.getElementById('pac-input').value;
       var end = document.getElementById('tuj-input').value;
 
       if (start == '') {
         start = latLng;
       }
 
-      console.log(start+' '+end);
+      //console.log(start+' '+end);
 
       directionsService.route({
         origin: start,
         destination: end,
-        travelMode: 'DRIVING'
+        travelMode: 'DRIVING',
+        drivingOptions: {
+          departureTime: new Date(Date.now()),  // for the time N milliseconds from now.
+          trafficModel: 'optimistic'
+        }
       }, function(response, status) {
         if (status === 'OK') {
+          console.log(response);
           directionsDisplay.setDirections(response);
           calculateDistances(start, end);
         } else {
@@ -215,6 +220,7 @@ app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation
       if (status != google.maps.DistanceMatrixStatus.OK) {
         alert('Error was: ' + status);
       } else {
+        console.log(response);
           var origins = response.originAddresses;
           var destinations = response.destinationAddresses;
           // var outputDiv = document.getElementById('outputDiv');
@@ -251,8 +257,8 @@ app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation
           destinations: [end],
           travelMode: google.maps.TravelMode.DRIVING, 
           unitSystem: google.maps.UnitSystem.METRIC,
-          avoidHighways: false,
-          avoidTolls: false
+          avoidHighways: true,
+          avoidTolls: true
       }, callback);
     }
  
@@ -307,22 +313,93 @@ app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation
         // map.setCenter(marker.getPosition());
         marker.setVisible(false);
         marker_inv.style.display = "block";
+        setmap = 'false';
       });
 
       
      
     });
 
+    google.maps.event.addListener($scope.map, 'drag', function (event) {
+          //marker.setPosition($scope.map.getCenter());
+          //console.log($scope.map.getCenter().lat());
+          var latitude = $scope.map.getCenter().lat();
+          var longitude = $scope.map.getCenter().lng();
+          
+          params = {
+            coords: [latitude, longitude]
+             //addr: 'dunes.inherit.riper'
+          };
+
+          straddr = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+params.coords+'&sensor=true';
+          $http.get(straddr)
+          .success(function(response){
+            //$scope.title1 = response.results[0].formatted_address;
+
+            if (setmap == 'false') {
+              console.log(response.results[0].formatted_address);
+              $scope.search1 = response.results[0].formatted_address;
+              start = response.results[0].formatted_address;
+            }
+          })
+          .error(function(){
+            var alertPopup = $ionicPopup.alert({
+              title: 'Fild!',
+              template: 'Please check your connection!'
+            });
+          });
+
+          //w3w.reverse(params, callback);
+    });
+    var setmap = 'false';
+    var service_place = new google.maps.places.PlacesService($scope.map);
+
     $scope.setMap = function(){
+
+
       var cntr = $scope.map.getCenter();
       if (marker.visible == true) {
         console.log(marker);
         console.log(cntr.lng());
       }else{
         console.log(marker);
-        marker.setVisible();
+        marker.setVisible(true);
         marker.setPosition($scope.map.getCenter());
         marker_inv.style.display = "none";
+        var latitude = $scope.map.getCenter().lat();
+        var longitude = $scope.map.getCenter().lng();
+          
+        params = {
+          coords: [latitude, longitude]
+             //addr: 'dunes.inherit.riper'
+        };
+
+
+        straddr = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+params.coords+'&sensor=true';
+          $http.get(straddr)
+          .success(function(response){
+            //$scope.title1 = response.results[0].formatted_address;
+            //console.log(setmap);
+              // console.log(response.results[0].formatted_address);
+
+            if (setmap == 'false') {
+              $scope.search1 = response.results[0].formatted_address;
+              setmap = 'true';
+              var place = searchBox.getPlaces();
+              start = response.results[0].formatted_address;
+              // if (!place.geometry) {
+              //   return;
+              // }
+
+              // console.log(place.place_id);
+            }
+          })
+          .error(function(){
+            var alertPopup = $ionicPopup.alert({
+              title: 'Fild!',
+              template: 'Please check your connection!'
+            });
+        });
       }
     }
 
@@ -334,6 +411,15 @@ app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation
       //   var longitude = latLng.lng();
 
       // });
+
+      console.log(latLng.lat()+' , '+latLng.lng());
+    }
+
+    $scope.orderRide = function(){
+      var alertPopup = $ionicPopup.alert({
+        title: 'Information',
+        template: 'YOJEK DRIVER under maintanance, Please try again letter!'
+      });
     }
 
     

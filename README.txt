@@ -148,3 +148,8 @@ https://developers.google.com/maps/documentation/android-api/location#my-locatio
       //         stylers: [{color: '#17263c'}]
       //       }
       //     ]
+
+
+BNP : 1045100 
+PMT : 900000
+CC  : 3200000
