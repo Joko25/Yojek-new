@@ -1,4 +1,4 @@
-app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ionicModal, $ionicLoading, $ionicScrollDelegate) {
+app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ionicModal, $ionicLoading, $ionicScrollDelegate, $cordovaInAppBrowser) {
   var latLng='';
   var options = {timeout: 10000, enableHighAccuracy: true};
   var map;
@@ -174,6 +174,7 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
   };
 
 
+
   $scope.yoFood = function(id){
     console.log(id);
 
@@ -197,6 +198,22 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
        //  // console.log(place.photos[i].getUrl({maxWidth: 1000, maxHeight: 400}));
        // }
        $scope.modal.show();
+      $scope.toWeb = function(link){
+        console.log(link);
+        var options = {
+          location: 'yes',
+          clearcache: 'yes',
+          toolbar: 'no'
+        };
+
+        $cordovaInAppBrowser.open(link, '_blank', options)
+        .then(function(event) {
+          // success
+        })
+        .catch(function(event) {
+          // error
+        });
+      }
      }
     });
 
