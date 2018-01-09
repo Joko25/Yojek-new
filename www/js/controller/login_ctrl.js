@@ -1,6 +1,6 @@
 app.controller('loginCtrl', function($scope, $state, $http, $ionicPopup, Firebase, md5, $window, $ionicLoading, UserService) {
   $scope.data = {};
-  $scope.face = 'img/icon.png';
+  $scope.face = 'img/yori.png';
 
   var log = $window.localStorage.getItem("log");
 
