@@ -102,6 +102,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('app.user', {
+      url: '/user',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/user.html',
+          controller: 'PlaylistsCtrl'
+        }
+      }
+    })
 
   .state('app.single', {
     url: '/playlists/:playlistId',

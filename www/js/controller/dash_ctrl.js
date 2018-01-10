@@ -1,4 +1,4 @@
-app.controller('dashCtrl', function($scope, $state, $cordovaGeolocation, $window) {
+app.controller('dashCtrl', function($scope, $state, $cordovaGeolocation, $window, UserService) {
   $scope.yoRide  = function(){
     $state.go("yoride");
     $window.location.reload(true);
@@ -13,6 +13,9 @@ app.controller('dashCtrl', function($scope, $state, $cordovaGeolocation, $window
   $scope.yoMart  = function(){
     $state.go("app.yomart");
   }
+
+  // console.log(UserService.getUser());
+
 	$scope.options = {
       loop: false,
       effect: 'fade',

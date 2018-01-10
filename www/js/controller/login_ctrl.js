@@ -27,14 +27,14 @@ app.controller('loginCtrl', function($scope, $state, $http, $ionicPopup, Firebas
       });
     }else{
 
-      console.log(md5.createHash(password));
+      //console.log(md5.createHash(password));
       var usersRef = firebase.database().ref('users/'+username);
       // usersRef.orderByChild("password").equalTo(md5.createHash(password)).on("child_added", function(data) {
       //    console.log("Equal to filter: " + data.val().password);
       // });
 
       usersRef.on("value", function(snapshot){
-       console.log(snapshot.val());
+       //console.log(snapshot.val());
 
        if (snapshot.val() == null) {
         $ionicLoading.hide();
@@ -50,14 +50,15 @@ app.controller('loginCtrl', function($scope, $state, $http, $ionicPopup, Firebas
 
           UserService.setUser({
             userID: username,
-            name: user_data.displayName,
+            name: snapshot.val().user,
             email: snapshot.val().email,
             picture: '',
-            accessToken: '',
-            idToken: ''
+            accessToken: 'user',
+            idToken: snapshot.val().password,
+            point: 0
           });
 
-          console.log(userLog);
+          // console.log(userLog);
         }else{
           var alertPopup = $ionicPopup.alert({
             title: 'Login error!',
@@ -107,7 +108,8 @@ app.controller('loginCtrl', function($scope, $state, $http, $ionicPopup, Firebas
           email: user_data.email,
           picture: user_data.imageUrl,
           accessToken: user_data.accessToken,
-          idToken: user_data.idToken
+          idToken: user_data.idToken,
+          point: 0
         });
 
         $ionicLoading.hide();

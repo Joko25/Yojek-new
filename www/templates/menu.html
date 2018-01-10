@@ -20,12 +20,33 @@
   <ion-side-menu side="left" class="energized-bg" scroll="false">
       <div class="row">
         <div class="col col-top"></div>
-        <div class="col col-center">
-          <img src="img/lg2.png" width="100%" >
+        <div class="col col-center" >
+          <div ng-if="userData.picture == ''" align="center" style="width:90px; height:87px;border: 1px solid none; border-radius: 100%; padding-top: 20%;" class="balanced-bg">
+            <h1>{{initimg}}</h1>
+          </div>
+
+          <div ng-if="userData.picture != ''" align="center" style="width:90px; height:87px;border: 1px solid none; border-radius: 100%; padding-top: 20%;" class="balanced-bg">
+            <img src="img/lg2.png" width="70%" align="middle" >
+          </div>
         </div>
-        <div class="col col-bottom"></div>
+        <div class="col col-top" align="right">
+          <a ng-click="alert()"><i class="icon ion-ios-compose-outline" style="font-size: 25px" ></i></a>
+        </div>
       </div> 
+      <!-- <hr> -->
+      <div class="row">
+        <!-- <div class="col col-20">
+        </div> -->
+        <div class="col col-100" align="center">
+          <span style="font-size: 19px; color: #708090">{{userData.name}}</span><br/>
+          <span>{{userData.userID}} | {{userData.email}}</span>
+        </div>
+        <!-- <div class="col col-20" align="right">
+          <a>Edit</a>
+        </div> -->
+      </div>
     <ion-header-bar class="bar-transparent" align="center">
+
       <!-- <div style="background: url('img/lg.png'); background-size: cover;" style="width: 50%">a</div> -->
       <!-- <h1 class="title">Menu</h1> -->
         <!-- <p>
@@ -33,17 +54,35 @@
           <span>a</span>
         </p> -->
     </ion-header-bar>
-    <ion-content class="stable-bg has-expanded-header" style="margin-top: 40%">
+    <ion-content class="stable-bg has-expanded-header" style="margin-top: 47%">
       <div >
         <ion-list >
-          <ion-item menu-close href="#/app/dash">
+          <ion-item class="item-icon-left" menu-close href="#/app/dash">
+            <i class="icon ion-android-home"  style="font-size: 20px;"></i>
             Home
           </ion-item>
-          <ion-item menu-close ng-click="logout()">
-            Logout
+          <ion-item class="item-icon-left" menu-close>
+            <i class="icon ion-android-notifications-none" style="font-size: 20px;"></i>
+            Notification
           </ion-item>
+          <ion-item class="item-icon-left" menu-close>
+            <i class="icon ion-ribbon-a" style="font-size: 20px;"></i>
+            Yo-Point
+            <span class="badge badge-assertive">{{userData.point}} pts</span>
+          </ion-item>
+          <ion-item class="item-icon-left" menu-close>
+            <i class="icon icon-small ion-ios-information-outline" style="font-size: 20px;"></i>
+            Help
+          </ion-item>
+          <!-- <ion-item class="item-icon-left item-" menu-close >
+          </ion-item> -->
         </ion-list>
       </div>
+        <div align="center" class="bar bar-footer bar-assertive">
+            <!--  -->
+            <!-- Logout -->
+          <span class="title" ng-click="logout()" id="Fontfooter"> <i class="icon ion-power"></i> Logout</span>
+        </div>
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>
