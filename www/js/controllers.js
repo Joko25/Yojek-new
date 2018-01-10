@@ -8,7 +8,18 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout, $window, $stat
 
   // Form data for the login modal
   $scope.loginData = {};
+
   
+  $scope.userData = UserService.getUser();
+  var name = UserService.getUser().name;
+  $scope.initimg = name.substr(0, 1);
+  console.log($scope.userData);
+
+  $scope.alert = function(){
+    alert();
+  }
+
+
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
