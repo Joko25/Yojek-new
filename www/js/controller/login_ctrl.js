@@ -129,6 +129,8 @@ app.controller('RegCtrl', function($scope, $ionicHistory, $window, $ionicPopup, 
     $state.go("login");
   }
 
+  $scope.face = "img/yori.png";
+
   $scope.data = {};
 
   $scope.regist = function(){

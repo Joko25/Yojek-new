@@ -110,6 +110,7 @@ app.controller('homeCtrl', function($scope, $state, $window, $stateParams, $ioni
 
     $scope.face = 'img/lg.png';
     $scope.face2 = 'img/lg2.png';
+    $scope.face3 = 'img/yori_icon.png';
 
     $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
     // data.slider is the instance of Swiper
