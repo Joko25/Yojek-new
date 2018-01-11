@@ -55,7 +55,8 @@ app.controller('loginCtrl', function($scope, $state, $http, $ionicPopup, Firebas
             picture: '',
             accessToken: 'user',
             idToken: snapshot.val().password,
-            point: 0
+            point: snapshot.val().point,
+            phone: 0
           });
 
           // console.log(userLog);
@@ -109,7 +110,8 @@ app.controller('loginCtrl', function($scope, $state, $http, $ionicPopup, Firebas
           picture: user_data.imageUrl,
           accessToken: user_data.accessToken,
           idToken: user_data.idToken,
-          point: 0
+          point: 0,
+          phone: 0
         });
 
         $ionicLoading.hide();
@@ -156,7 +158,10 @@ app.controller('RegCtrl', function($scope, $ionicHistory, $window, $ionicPopup, 
               email: $scope.data.email,
               // username: $scope.data.username,
               user: $scope.data.name,
-              password: md5.createHash($scope.data.password)
+              password: md5.createHash($scope.data.password),
+              access: 'user',
+              phone: '0',
+              point: 0
             });
 
             usersRef.on("child_added", function(data, prevChildKey){
