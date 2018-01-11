@@ -142,3 +142,13 @@ app.controller('homeCtrl', function($scope, $state, $window, $stateParams, $ioni
   }
 
 });
+
+app.controller('userCtrl', function($scope, $state, $window, $stateParams, $ionicSlideBoxDelegate, UserService) {
+  $scope.userData = UserService.getUser();
+  var name = UserService.getUser().name;
+  $scope.initimg = name.substr(0, 1);
+
+  $scope.name=$scope.userData.name;
+  $scope.username=$scope.userData.userID;
+  $scope.email=$scope.userData.email;
+});

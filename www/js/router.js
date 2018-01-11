@@ -107,7 +107,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       views: {
         'menuContent': {
           templateUrl: 'templates/user.html',
-          controller: 'PlaylistsCtrl'
+          controller: 'userCtrl'
         }
       }
     })

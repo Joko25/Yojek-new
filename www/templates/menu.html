@@ -21,16 +21,19 @@
       <div class="row">
         <div class="col col-top"></div>
         <div class="col col-center" >
-          <div ng-if="userData.picture == ''" align="center" style="width:90px; height:87px;border: 1px solid none; border-radius: 100%; padding-top: 20%;" class="balanced-bg">
-            <h1>{{initimg}}</h1>
-          </div>
+          <a menu-close href="#/app/user" style="text-decoration-line: none;">
+            <div ng-if="userData.picture == ''" align="center" style="width:90px; height:87px;border: 1px solid none; border-radius: 100%; padding-top: 20%;" class="balanced-bg">
+              <h1>{{initimg}}</h1>
+            </div>
 
-          <div ng-if="userData.picture != ''" align="center" style="width:90px; height:87px;border: 1px solid none; border-radius: 100%; padding-top: 20%;" class="balanced-bg">
-            <img src="img/lg2.png" width="70%" align="middle" >
-          </div>
+            <div ng-if="userData.picture != ''" align="center" style="width:90px; height:87px;border: 1px solid none; border-radius: 100%; padding-top: 20%;" class="balanced-bg">
+              <img src="img/lg2.png" width="70%" align="middle" />
+            </div>
+          </a>
         </div>
-        <div class="col col-top" align="right">
-          <a ng-click="alert()"><i class="icon ion-ios-compose-outline" style="font-size: 25px" ></i></a>
+        <div class="col col-top" >
+          <!-- <button class="button button-positive">tes</button> -->
+          <!-- <a ng-click="alert()"><i class="icon ion-ios-compose-outline" style="font-size: 25px" ></i></a> -->
         </div>
       </div> 
       <!-- <hr> -->
@@ -38,8 +41,8 @@
         <!-- <div class="col col-20">
         </div> -->
         <div class="col col-100" align="center">
-          <span style="font-size: 19px; color: #708090">{{userData.name}}</span><br/>
-          <span>{{userData.userID}} | {{userData.email}}</span>
+          <span style="font-size: 19px;"><a menu-close href="#/app/user" style="text-decoration-line: none;">{{userData.name}}</a></span><br/>
+          <span style="color: #708090">ID: {{userData.userID}} | {{userData.email}}</span>
         </div>
         <!-- <div class="col col-20" align="right">
           <a>Edit</a>

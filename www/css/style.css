@@ -7,6 +7,10 @@
   width:100%;
 }
 
+.frmclr{
+  border-top: none; border-right: none; border-left: none;
+}
+
 #loginFontfooter{
 	font-size: 11px;
 }

@@ -1,5 +1,60 @@
-<ion-view view-title="User">
+<ion-view>
+  <ion-nav-buttons side="right">
+        <button class="button button-clear" >Ubah
+        </button>
+  </ion-nav-buttons>
   <ion-content>
-    <h1>User</h1>
+    <!-- <h1>User</h1> -->
+    <div class="row">
+        <div class="col col-top"></div>
+        <div class="col col-center" >
+        	<div ng-if="userData.picture == ''" align="center" style="width:90px; height:87px;border: 1px solid none; border-radius: 100%; padding-top: 20%;" class="balanced-bg">
+        	  <h1>{{initimg}}</h1>
+        	</div>
+
+        	<div ng-if="userData.picture != ''" align="center" style="width:90px; height:87px;border: 1px solid none; border-radius: 100%; padding-top: 20%;" class="balanced-bg">
+        	  <img src="img/lg2.png" width="70%" align="middle" />
+        	</div>
+        </div>
+        <div class="col col-top" >
+          <!-- <button class="button button-positive">tes</button> -->
+          <!-- <a ng-click="alert()"><i class="icon ion-ios-compose-outline" style="font-size: 25px" ></i></a> -->
+        </div>
+      </div>
+      <div class="row">
+        <!-- <div class="col col-20">
+        </div> -->
+        <div class="col col-100" align="center">
+          <span style="font-size: 19px;"><a style="text-decoration-line: none;">{{userData.name}}</a></span><br/>
+          <span style="color: #708090">ID: {{userData.userID}} | Yo-Point <span class="badge badge-assertive">{{userData.point}} pts</span></span>
+        </div>
+        <!-- <div class="col col-20" align="right">
+          <a>Edit</a>
+        </div> -->
+      </div>
+
+     	<div class="list" style="margin: 0 15px 0 15px;">
+			<label class="item item-input item-stacked-label frmclr">
+				<span class="input-label">Full Name</span>
+				<input type="text" placeholder="full name" ng-model="name">
+		 	</label>
+			<label class="item item-input item-stacked-label frmclr">
+				<span class="input-label">Username</span>
+				<input type="text" placeholder="Username" ng-model="username">
+			</label>
+			<label class="item item-input item-stacked-label frmclr">
+				<span class="input-label">Email</span>
+				<input type="text" placeholder="user@mail.com" ng-model="email">
+			</label>
+			<label class="item item-input item-stacked-label frmclr">
+				<span class="input-label">Phone</span>
+				<input type="text" placeholder="+62" ng-model="phone">
+			</label>
+		</div>
   </ion-content>
+  	<div align="center" class="bar bar-footer bar-assertive">
+            <!--  -->
+            <!-- Logout -->
+    	<span class="title" ng-click="deleteAkun()" id="Fontfooter"> Hapus Akun</span>
+    </div>
 </ion-view>
