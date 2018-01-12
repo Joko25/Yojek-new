@@ -56,7 +56,7 @@ app.controller('loginCtrl', function($scope, $state, $http, $ionicPopup, Firebas
             accessToken: 'user',
             idToken: snapshot.val().password,
             point: snapshot.val().point,
-            phone: 0
+            phone: snapshot.val().phone
           });
 
           // console.log(userLog);

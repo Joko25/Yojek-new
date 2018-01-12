@@ -1,6 +1,6 @@
 <ion-view>
   <ion-nav-buttons side="right">
-        <button class="button button-clear" >Ubah
+        <button class="button button-clear" ng-click="ubah()">Ubah
         </button>
   </ion-nav-buttons>
   <ion-content>
@@ -35,20 +35,20 @@
 
      	<div class="list" style="margin: 0 15px 0 15px;">
 			<label class="item item-input item-stacked-label frmclr">
-				<span class="input-label">Full Name</span>
-				<input type="text" placeholder="full name" ng-model="name">
-		 	</label>
-			<label class="item item-input item-stacked-label frmclr">
 				<span class="input-label">Username</span>
-				<input type="text" placeholder="Username" ng-model="username">
+				<input type="text" placeholder="Username" ng-model="data.username" readonly="readonly">
 			</label>
 			<label class="item item-input item-stacked-label frmclr">
+				<span class="input-label">Full Name</span>
+				<input type="text" placeholder="full name" ng-model="data.name">
+		 	</label>
+			<label class="item item-input item-stacked-label frmclr">
 				<span class="input-label">Email</span>
-				<input type="text" placeholder="user@mail.com" ng-model="email">
+				<input type="text" placeholder="user@mail.com" ng-model="data.email">
 			</label>
 			<label class="item item-input item-stacked-label frmclr">
 				<span class="input-label">Phone</span>
-				<input type="text" placeholder="+62" ng-model="phone">
+				<input type="text" placeholder="+62" ng-model="data.phone">
 			</label>
 		</div>
   </ion-content>

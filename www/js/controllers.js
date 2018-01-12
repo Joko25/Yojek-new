@@ -143,12 +143,67 @@ app.controller('homeCtrl', function($scope, $state, $window, $stateParams, $ioni
 
 });
 
-app.controller('userCtrl', function($scope, $state, $window, $stateParams, $ionicSlideBoxDelegate, UserService) {
+app.controller('userCtrl', function($scope, $state, $ionicPopup, $window, $stateParams, $ionicSlideBoxDelegate, UserService, Firebase) {
   $scope.userData = UserService.getUser();
   var name = UserService.getUser().name;
   $scope.initimg = name.substr(0, 1);
 
-  $scope.name=$scope.userData.name;
-  $scope.username=$scope.userData.userID;
-  $scope.email=$scope.userData.email;
+  $scope.data = {};
+
+  $scope.data.name=$scope.userData.name;
+  $scope.data.username=$scope.userData.userID;
+  $scope.data.email=$scope.userData.email;
+  $scope.data.phone=$scope.userData.phone;
+
+  var uRef = firebase.database().ref('users/'+$scope.userData.userID);
+
+  if ($scope.data.phone=='') {
+    $scope.data.phone = 0
+  }
+
+  $scope.ubah = function(){
+    //console.log($scope.data);
+    // uRef.on("value", function(snapshot){ 
+      uRef.update({
+        email: $scope.data.email,
+        // username: $scope.data.username,
+        user: $scope.data.name,
+        // password: md5.createHash($scope.data.password),
+        access: 'user',
+        phone: $scope.data.phone,
+        point: 0
+      }, function(success){
+        console.log(success);
+      });
+        UserService.setUser({
+          userID: $scope.userData.userID,
+          name: $scope.data.name,
+          email: $scope.data.email,
+          picture: '',
+          accessToken: 'user',
+          idToken: $scope.userData.password,
+          point: $scope.userData.point,
+          phone: $scope.data.phone
+        });
+        var alertPopup = $ionicPopup.alert({
+          title: 'Update Success!',
+          template: "Data berhasil di perbaharui"
+        });
+
+      var uRef_ = firebase.database().ref('users/');
+
+      uRef_.on("child_changed", function(data) {
+        var user = data.val();
+        console.log("The updated is " + user);
+      }, function(error){
+        var alertPopup = $ionicPopup.alert({
+          title: 'Register failed!',
+          template: "Harap terisi semua, format email harus benar"
+        });
+        $ionicLoading.hide();
+        console.log("Error "+error.code)
+      });
+
+    // });
+  }
 });
