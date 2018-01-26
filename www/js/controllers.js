@@ -19,7 +19,11 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout, $window, $stat
     alert();
   }
 
-
+  $scope.reload = function(){
+    $scope.userData = UserService.getUser();
+    var name = UserService.getUser().name;
+    $scope.initimg = name.substr(0, 1);
+  }
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -190,7 +194,11 @@ app.controller('userCtrl', function($scope, $state, $ionicPopup, $window, $state
           template: "Data berhasil di perbaharui"
         });
 
-      var uRef_ = firebase.database().ref('users/');
+        $scope.userData = UserService.getUser();
+        var name = UserService.getUser().name;
+        $scope.initimg = name.substr(0, 1);
+        console.log($scope.userData);
+        var uRef_ = firebase.database().ref('users/');
 
       uRef_.on("child_changed", function(data) {
         var user = data.val();
@@ -204,6 +212,5 @@ app.controller('userCtrl', function($scope, $state, $ionicPopup, $window, $state
         console.log("Error "+error.code)
       });
 
-    // });
   }
 });

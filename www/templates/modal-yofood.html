@@ -15,7 +15,6 @@
           <span ng-if="opening.open_now == true" style="color: #9ACD32; border: 1px solid #9ACD32; border-radius: 4px;font-size: 12px; padding: 0 5px 0 5px;">OPEN</span>
           <span ng-if="opening.open_now == false" style="color: #FF4500; border: 1px solid #FF4500; border-radius: 4px;font-size: 12px; padding: 0 5px 0 5px;">CLOSE</span>
           <strong>{{phone}}</strong> | <a ng-click="toWeb(website)">{{website}}</a>
-
         </div>
   <ion-content style="top: 45%;z-index: -1"> 
       <ion-tabs class="tabs-top" >
@@ -33,7 +32,6 @@
                           
                         </div>
                     </ion-content>
-
                 </ion-nav-view>
             </ion-tab>
 
@@ -42,7 +40,9 @@
             <ion-tab title="Menu" class="positive">
                 <ion-nav-view name="tab-tab2" >
                     <ion-content>
-                        Not fond
+                        <!-- Not fond -->
+                        <button class="button" ng-click="">Sarankan</button>
+                        <button class="button" ng-click="">Order Manual</button>
                     </ion-content>
                 </ion-nav-view>
             </ion-tab>
