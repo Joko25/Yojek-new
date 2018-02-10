@@ -185,14 +185,26 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
       placeId: id
     }, function(place, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-       console.log(place);
        $scope.title = place.name;
        $scope.slide = place.photos;
+
+       if ($scope.slide == undefined) {
+        $scope.slide = [];
+       }
+
+       // console.log($scope.slide);
+
        $scope.address = place.formatted_address;
        $scope.phone = place.formatted_phone_number;
        $scope.website = place.website;
        $scope.opening = place.opening_hours;
        $scope.review = place.reviews;
+
+       if ($scope.review == undefined) {
+        $scope.review = [];
+       }
+
+       console.log($scope.review);
 
        // for (var i = 0; i < place.photos.length; i++) {
        //  // console.log(place.photos[i].getUrl({maxWidth: 1000, maxHeight: 400}));
@@ -235,7 +247,7 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
     console.log('Refreshing!');
     service.nearbySearch({
       location: latLng,
-      radius: 5000,
+      radius: 100,
       type: ['restaurant']
     }, processResults);
     //$timeout( function() {

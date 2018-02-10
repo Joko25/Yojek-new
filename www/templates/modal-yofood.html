@@ -1,48 +1,56 @@
-<ion-modal-view style="background-color: #FFFAFA">
-      <div>
-            
-        <ion-slides  style="height: 30%; position: absolute;" options="options" slider="data.slider" does-continue="true">
-          <ion-slide-page ng-repeat="slides in slide">
-            <div class="box" style="background-image: url('{{slides.getUrl({maxWidth: 1000, maxHeight: 400})}}'); background-size: 100%;">
-              <button class="button button-icon ion-chevron-left light" ng-click="closeModal()">Back</button>
-            </div>
-          </ion-slide-page>
+<ion-modal-view style="background-color: #FFFAFA" scroll="true">
+  <ion-content overflow-scroll="true">
+         <ion-slides  style="height: 30%; position: absolute;" options="options" slider="data.slider" does-continue="true">
+            <ion-slide-page ng-if="slide.length === 0">
+              <div class="box" style="background-image: url('img/default-food.jpg'); background-size: 100%;">
+                <button class="button button-icon ion-chevron-left light" ng-click="closeModal()" style="z-index: 9999"><span>Back</span></button>
+              </div>
+            </ion-slide-page>
+            <ion-slide-page ng-repeat="slides in slide" ng-if="slide.length !== 0">
+              <div class="box" style="background-image: url('{{slides.getUrl({maxWidth: 1000, maxHeight: 400})}}'); background-size: 100%;">
+                <button class="button button-icon ion-chevron-left light" ng-click="closeModal()"><span>Back</span></button>
+              </div>
+            </ion-slide-page>
+          </div>
         </ion-slides>
-      </div>   
-        <div style="padding: 5px; margin-bottom: 0; position: absolute; top: 30%;">
-          <h4 >{{title}}</h4>
-          <p>{{address}}</p> 
-          <span ng-if="opening.open_now == true" style="color: #9ACD32; border: 1px solid #9ACD32; border-radius: 4px;font-size: 12px; padding: 0 5px 0 5px;">OPEN</span>
-          <span ng-if="opening.open_now == false" style="color: #FF4500; border: 1px solid #FF4500; border-radius: 4px;font-size: 12px; padding: 0 5px 0 5px;">CLOSE</span>
-          <strong>{{phone}}</strong> | <a ng-click="toWeb(website)">{{website}}</a>
-        </div>
-  <ion-content style="top: 45%;z-index: -1"> 
-      <ion-tabs class="tabs-top" >
-            <!-- Tab 1 -->
+    
+      <ion-scroll style="height: 25%; padding: 5px; margin-bottom: 0; position: absolute; top: 30%;" overflow-scroll="true"> <!--  -->
+        <h4 >{{title}}</h4>
+        <p>{{address}}</p> 
+        <span ng-if="opening.open_now == true" style="color: #9ACD32; border: 1px solid #9ACD32; border-radius: 4px;font-size: 12px; padding: 0 5px 0 5px;">OPEN</span>
+        <span ng-if="opening.open_now == false" style="color: #FF4500; border: 1px solid #FF4500; border-radius: 4px;font-size: 12px; padding: 0 5px 0 5px;">CLOSE</span>
+        <strong>{{phone}}</strong> | <a ng-click="toWeb(website)">{{website}}</a>
+      </ion-scroll> 
+  </ion-content>
+
+      
+  <ion-content style="top: 45%; z-index: 99999999"> <!-- top: 45%; z-index: -1 -->
+        <ion-tabs class="tabs-top"  >
             <ion-tab title="Review" class="positive">
                 <ion-nav-view name="tab-tab1">
                     <ion-content>
-                        <div  class="list" style="margin:none;">
-                           <a ng-repeat = "d in review" class="item item-thumbnail-left" style="margin:none;">
-                              <img src="{{d.profile_photo_url}}">
-                              <h2>{{d.author_name}}</h2>
-                              <span >{{d.text}}</span>
-                              <p>{{d.relative_time_description}}</p>
-                            </a>
-                          
-                        </div>
+                      <div  class="list" style="margin:none;" ng-if="review.length === 0">
+                      </div>
+                      <div  class="list" style="margin:none;" ng-if="review.length !== 0">
+                         <a ng-repeat = "d in review" class="item item-thumbnail-left" style="margin:none;">
+                            <img src="{{d.profile_photo_url}}">
+                            <h2>{{d.author_name}}</h2>
+                            <span >{{d.text}}</span>
+                            <p>{{d.relative_time_description}}</p>
+                          </a>
+                      </div>
                     </ion-content>
                 </ion-nav-view>
             </ion-tab>
 
 
-            <!-- Tab 2 -->
             <ion-tab title="Menu" class="positive">
                 <ion-nav-view name="tab-tab2" >
-                    <ion-content>
-                        <!-- Not fond -->
-                        <button class="button button-block button-positive" ng-click="">Sarankan</button>
-                        <button class="button button-block button-positive" ng-click="">Order Manual</button>
+                    <ion-content class="center">
+                        <dir class="col">
+                          <button class="button button-block button-positive" ng-click="">Sarankan</button>
+                          <button class="button button-block button-positive" ng-click="">Order Manual</button>
+                        </dir>
                     </ion-content>
                 </ion-nav-view>
             </ion-tab>
