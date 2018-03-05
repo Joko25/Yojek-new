@@ -28,6 +28,16 @@
   padding: 0;
 }
 
+.slideContainerfood {
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+    .slidefood {
+        display: inline-block;
+        width: 600px;
+        white-space: normal;
+    }
+
 .foodrating {
   width: 10%; 
   background-color: #FFD700; 
