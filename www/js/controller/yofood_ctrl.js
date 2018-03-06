@@ -94,6 +94,38 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
     link:'id=03'
   }];
 
+  $scope.category = [{
+    bg: 'img/food1.jpg',
+    title: 'Cafe/ Coffe or tea shop',
+    desc: 'ini adalah deskripsinya',
+    link:'id=01'
+  },{
+    bg: 'img/food2.jpg',
+    title: 'Breakfast/ Brunch',
+    desc: 'ini adalah deskripsinya ke 2',
+    link:'id=02'
+  },{
+    bg: 'img/food3.jpg',
+    title: 'Juice/Tea/ Beverage', 
+    desc: 'ini adalah deskripsinya ke 3',
+    link:'id=03'
+  },{
+    bg: 'img/food3.jpg',
+    title: 'Dessert',
+    desc: 'ini adalah deskripsinya ke 3',
+    link:'id=03'
+  },{
+    bg: 'img/food3.jpg',
+    title: 'Bakery/Cake',
+    desc: 'ini adalah deskripsinya ke 3',
+    link:'id=03'
+  },{
+    bg: 'img/food3.jpg',
+    title: 'Fast Food',
+    desc: 'ini adalah deskripsinya ke 3',
+    link:'id=03'
+  }];
+
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
     latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
