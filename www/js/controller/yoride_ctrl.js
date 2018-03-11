@@ -215,6 +215,8 @@ app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation
 
     var harga = 0;
 
+    
+
     function callback(response, status) {
       console.log(response);
       if (status != google.maps.DistanceMatrixStatus.OK) {

@@ -43,10 +43,7 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
     top = 0;
   };
 
-$scope.linkfood = function(link){
-      console.log(link);
-      $state.go('yofood_view');
-    }
+
 
   // $scope.place = [];
   $scope.options = {
@@ -98,32 +95,32 @@ $scope.linkfood = function(link){
   }];
 
   $scope.category = [{
-    bg: 'ion-coffee',
-    title: 'Cafe / Coffe',
+    bg: 'img/food1.jpg',
+    title: 'Cafe/ Coffe or tea shop',
     desc: 'ini adalah deskripsinya',
     link:'id=01'
   },{
-    bg: 'ion-pizza',
-    title: 'Fast Food',
+    bg: 'img/food2.jpg',
+    title: 'Breakfast/ Brunch',
     desc: 'ini adalah deskripsinya ke 2',
     link:'id=02'
   },{
-    bg: 'ion-coffee',
-    title: 'Main Food', 
+    bg: 'img/food3.jpg',
+    title: 'Juice/Tea/ Beverage', 
     desc: 'ini adalah deskripsinya ke 3',
     link:'id=03'
   },{
-    bg: 'ion-coffee',
+    bg: 'img/food3.jpg',
     title: 'Dessert',
     desc: 'ini adalah deskripsinya ke 3',
     link:'id=03'
   },{
-    bg: 'ion-coffee',
+    bg: 'img/food3.jpg',
     title: 'Bakery/Cake',
     desc: 'ini adalah deskripsinya ke 3',
     link:'id=03'
   },{
-    bg: 'ion-coffee',
+    bg: 'img/food3.jpg',
     title: 'Fast Food',
     desc: 'ini adalah deskripsinya ke 3',
     link:'id=03'
