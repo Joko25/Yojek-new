@@ -7,45 +7,17 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
   var top = 0;
   $scope.noMoreItemsAvailable = false;
   var totalLoad = 0;
+  var status = '';
 
   $scope.closeq = function(){
     //alert('asdf');
   };
 
 
-
-  $scope.getScrollPosition = function() {
-    //monitor the scroll
-    var moveData = $ionicScrollDelegate.getScrollPosition();
-    var currentTop = $ionicScrollDelegate.getScrollPosition().top;
-    var maxTop = $ionicScrollDelegate.getScrollView(); //.__maxScrollTop
-    //console.log(maxTop);
-
-      if(top>20){
-          $scope.sttButton=true;
-          //console.log($scope.sttButton);
-        $scope.$apply(function(){
-        });//apply
-      }else{
-          $scope.sttButton=false;
-        $scope.$apply(function(){
-        });//apply
-      }
-
-      //console.log(top);
-
-      top = top + 1;
-  };
-
-  $scope.scrollToTop = function() { //ng-click for back to top button
-    $ionicScrollDelegate.scrollTop();
-    $scope.sttButton=false;  //hide the button when reached top
-    top = 0;
-  };
-
 $scope.linkfood = function(link){
       console.log(link);
-      $state.go('yofood_view');
+      $state.go('app.yofood_view');
+      status = link;
     }
 
   // $scope.place = [];
@@ -98,34 +70,34 @@ $scope.linkfood = function(link){
   }];
 
   $scope.category = [{
-    bg: 'ion-coffee',
-    title: 'Cafe / Coffe',
-    desc: 'ini adalah deskripsinya',
+    bg: 'ion-icecream',
+    title: 'Bakery',
+    desc: 'bakery',
     link:'id=01'
   },{
     bg: 'ion-pizza',
     title: 'Fast Food',
-    desc: 'ini adalah deskripsinya ke 2',
+    desc: 'food',
     link:'id=02'
   },{
     bg: 'ion-coffee',
-    title: 'Main Food', 
-    desc: 'ini adalah deskripsinya ke 3',
+    title: 'Cafe', 
+    desc: 'cafe',
     link:'id=03'
   },{
-    bg: 'ion-coffee',
-    title: 'Dessert',
-    desc: 'ini adalah deskripsinya ke 3',
+    bg: 'ion-soup-can-outline',
+    title: 'Meal Delivery',
+    desc: 'meal_delivery',
     link:'id=03'
   },{
-    bg: 'ion-coffee',
-    title: 'Bakery/Cake',
-    desc: 'ini adalah deskripsinya ke 3',
+    bg: 'ion-soup-can',
+    title: 'Meal Takeaway',
+    desc: 'meal_takeway',
     link:'id=03'
   },{
-    bg: 'ion-coffee',
-    title: 'Fast Food',
-    desc: 'ini adalah deskripsinya ke 3',
+    bg: 'ion-android-restaurant',
+    title: 'Restaurant',
+    desc: 'restaurant',
     link:'id=03'
   }];
 
@@ -159,40 +131,19 @@ $scope.linkfood = function(link){
       if (status !== google.maps.places.PlacesServiceStatus.OK) {
         return;
       } else {
-        createMarkers(results);
+        var res = results;
+        createMarkers(res);
         //console.log(pagination);
         // $scope.place = results;
        if (pagination.hasNextPage) {
         page = pagination;
-
-        // totalLoad = totalLoad + $scope.place.length;
-        // console.log(totalLoad);
-
-        
-
-          // $scope.loadMore = function(){
-          //   //alert('asdf');
-          //   console.log('more');
-          //    pagination.nextPage();
-          //   // $scope.$broadcast('scroll.infiniteScrollComplete');
-          // };
-          // $scope.$broadcast('scroll.infiniteScrollComplete');
-          // $scope.place = [];
-        // var moreButton = document.getElementById('more');
-        //  moreButton.disabled = false;
-        //  moreButton.addEventListener('click', function() {
-        //     moreButton.disabled = true;
-        //     pagination.nextPage();
-        //     // $scope.place+=results;
-        //    console.log($scope.place);
-        //   });
         }
       }
   }
 
   $scope.place = [];
   function createMarkers(places) {
-
+    //console.log(places);
     for (var i = 0, place; place = places[i]; i++) {
         // var poto = place.photos;
       $scope.place.push(place);
@@ -201,14 +152,13 @@ $scope.linkfood = function(link){
         // if (i == $scope.place.length) {
         $ionicLoading.hide();
         // }
-        console.log($scope.place.length-1);
+        // console.log($scope.place.length-1);
       if (i == ($scope.place.length-1)) {
         $scope.noMoreItemsAvailable = true;
       }
     }
+    console.log($scope.place);
   };
-
-
 
   $scope.yoFood = function(id){
     console.log(id);
@@ -269,36 +219,9 @@ $scope.linkfood = function(link){
     $scope.modal.hide();
     console.log();
   };
-       $ionicModal.fromTemplateUrl('templates/modal-yofood.html', {
-          scope: $scope
-        }).then(function(modal) {
-          $scope.modal = modal;
-        });
-
-  $scope.doRefresh = function() {
-
-    $scope.place = [];
-        
-    console.log('Refreshing!');
-    service.nearbySearch({
-      location: latLng,
-      radius: 100,
-      type: ['restaurant']
-    }, processResults);
-    //$timeout( function() {
-        $scope.$broadcast('scroll.refreshComplete');
-    //}, 1000);
-        
-  };
-
-  // if ( $scope.place.length == totalLoad ) {
-  //   $scope.noMoreItemsAvailable = true;
-  // }
-
-  $scope.loadMore = function(){
-    //alert('asdf');
-    console.log('more');
-    page.nextPage();
-    $scope.$broadcast('scroll.infiniteScrollComplete');
-  };
+  $ionicModal.fromTemplateUrl('templates/modal-yofood.html', {
+     scope: $scope
+   }).then(function(modal) {
+     $scope.modal = modal;
+   });
 });

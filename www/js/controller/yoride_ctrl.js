@@ -398,7 +398,7 @@ app.controller('yorideCtrl', function($scope, $state, $http, $cordovaGeolocation
           })
           .error(function(){
             var alertPopup = $ionicPopup.alert({
-              title: 'Fild!',
+              title: 'Field!',
               template: 'Please check your connection!'
             });
         });

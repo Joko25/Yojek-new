@@ -93,6 +93,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
+
+  .state('app.yofood_view', {
+      url: '/yofood_view',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/yofood_view.html',
+          controller: 'yofoodviewCtrl'
+        }
+      }
+    })
     .state('app.playlists', {
       url: '/playlists',
       views: {

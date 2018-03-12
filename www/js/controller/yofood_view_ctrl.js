@@ -1,4 +1,4 @@
-app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ionicModal, $ionicLoading, $ionicScrollDelegate, $cordovaInAppBrowser) {
+app.controller('yofoodviewCtrl', function($scope, $state, $cordovaGeolocation, $ionicModal, $ionicLoading, $ionicScrollDelegate, $cordovaInAppBrowser, $ionicPopup) {
   var latLng='';
   var options = {timeout: 10000, enableHighAccuracy: true};
   var map;
@@ -7,6 +7,7 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
   var top = 0;
   $scope.noMoreItemsAvailable = false;
   var totalLoad = 0;
+  var page = '';
 
   $scope.closeq = function(){
     //alert('asdf');
@@ -142,7 +143,7 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
     service = new google.maps.places.PlacesService(map);
     service.nearbySearch({
       location: latLng,
-      radius: 100,
+      radius: 500,
       type: ['restaurant']
     }, processResults);
 
@@ -150,7 +151,7 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
 
   });
 
-  var page;
+
 
   function processResults(results, status, pagination) {
       if (status !== google.maps.places.PlacesServiceStatus.OK) {
@@ -159,6 +160,7 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
         createMarkers(results);
         //console.log(pagination);
         // $scope.place = results;
+        console.log(pagination.hasNextPage);
        if (pagination.hasNextPage) {
         page = pagination;
 
@@ -183,6 +185,8 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
         //     // $scope.place+=results;
         //    console.log($scope.place);
         //   });
+        }else{
+          page = "false";
         }
       }
   }
@@ -266,11 +270,11 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
     $scope.modal.hide();
     console.log();
   };
-       $ionicModal.fromTemplateUrl('templates/modal-yofood.html', {
-          scope: $scope
-        }).then(function(modal) {
-          $scope.modal = modal;
-        });
+  $ionicModal.fromTemplateUrl('templates/modal-yofood.html', {
+     scope: $scope
+   }).then(function(modal) {
+     $scope.modal = modal;
+   });
 
   $scope.doRefresh = function() {
 
@@ -279,7 +283,7 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
     console.log('Refreshing!');
     service.nearbySearch({
       location: latLng,
-      radius: 100,
+      radius: 500,
       type: ['restaurant']
     }, processResults);
     //$timeout( function() {
@@ -294,8 +298,17 @@ app.controller('yofoodCtrl', function($scope, $state, $cordovaGeolocation, $ioni
 
   $scope.loadMore = function(){
     //alert('asdf');
-    console.log('more');
-    page.nextPage();
-    $scope.$broadcast('scroll.infiniteScrollComplete');
+    console.log(page);
+    if (page == 'false') {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Yofood!',
+        template: 'No More'
+      });
+      //$scope.$broadcast('scroll.infiniteScrollComplete');
+    }else{
+      page.nextPage();
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+      
+    }
   };
 });

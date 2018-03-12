@@ -9,7 +9,7 @@
     <label class="item item-input" style="width: 100%">
       <i class="icon ion-android-search placeholder-icon"></i>
       <input ng-model="q" type="text" placeholder="Search food..." data-tap-disabled="true" />
-      <button ng-click="closeq()" class="button button-small button-clear icon ion-android-close" ng-show="q.length" style="color: black; background-color: #fff; font-size: 11px;"></button>
+      <button ng-click="q = ''" class="button button-small button-clear icon ion-android-close" ng-show="q.length" style="color: black; background-color: #fff; font-size: 11px;"></button>
     </label>
     <!-- <button ng-click="closeq()" class="button button-icon icon ion-android-funnel"></button> -->
   </div>
@@ -17,25 +17,36 @@
     <div id="mapfood">
     </div>
       <div>
-        <div style="margin-top: 50px;">
-          <h4 style="margin-left: 5px">Trading</h4>
-          <div class="slideContainerfood" >
-            <div class="slidefood" ng-repeat="d in data" style="width: 40%;margin: 5px;">
-              <div class="box" align="center">
-                <img  ng-src="{{d.bg}}" class="imgBg" style="width: 100%; border-radius: 6px;">
+        <div style="margin: 50px 5px 10px 5px;">
+          <span style="font-size: 16px">Trading</span>
+          <div class="slideContainerfood" style="">
+            <div class="slidefood" ng-repeat="d in place" style="width: 40%;margin: 5px;">
+              <div ng-click="yoFood('{{d.place_id}}')" ng-if="d.photos[0] === undefined" class="box">
+                <img  ng-src='img/default-food.jpg' class="imgBg" style="height: 100px; border-radius: 6px;">
               </div>
-            <span>{{d.title}}</span>
+              <div ng-click="yoFood('{{d.place_id}}')" ng-if="d.photos[0] !== undefined" class="box">
+                <img  ng-src='{{d.photos[0].getUrl({maxWidth: 1000, maxHeight: 400})}}' class="imgBg" style="height: 100px; border-radius: 6px;">
+              </div>
+              <!-- <div class="box" align="center"> -->
+              <!-- </div> -->
+            <span>{{d.name.substr(0, 14)}} ...</span>
             </div>
           </div>
-          <h4 style="margin-left: 5px">Category</h4>
-          <div class="slideContainerfood" >
-            <div class="slidefood" ng-repeat="d in category" style="width: 25%; height:50px; margin: 5px;">
-              <div class="box" align="middle" style="width:60%; border: 1px solid #FFC300; border-radius: 100%;">
+        </div>
+
+        <div style="margin: 0 5px 0 5px;">
+          <span style="font-size: 16px">Category</span>
+          <div class="slideContainerfood" style="margin-bottom: 15px">
+            <div class="slidefood" align="center" ng-repeat="d in category" style="width: 25%; height:50px; margin: 2px;">
+              <div class="box"  style="width:60%;border: 1px solid #d0d0d0; border-radius: 20px; background-color: #fff;padding-top: 5px"> <!-- -->
                 <i class="icon {{d.bg}}" style="font-size: 34px; color: #FFC300;"></i>
               </div>
                 <span>{{d.title}}</span>
             </div>
           </div>
+        </div>
+          <!-- <hr/>-->
+
           <div class="row" align="center">
             <div class="col card" style="margin: 5px;">
               <div class="item item-body " >
@@ -47,13 +58,13 @@
               <div class="item item-body">
                 <i class="icon ion-thumbsup" style="font-size: 34px; color: #FFC300;"></i>
               </div>
-              <span> Best Seller</span>
+              <span>Best Seller</span>
             </div>
             <div class="col card" style="margin: 5px;">
               <div class="item item-body">
                 <i class="icon ion-heart" style="font-size: 34px; color: #FFC300;"></i>
               </div>
-              <span> Most Loved </span>
+              <span>Most Loved </span>
             </div>
           </div>
           <div class="row" align="center">

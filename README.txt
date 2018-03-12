@@ -150,9 +150,10 @@ https://developers.google.com/maps/documentation/android-api/location#my-locatio
       //     ]
 
 
-BNP : 1045100 
-PMT : 900000
-CC  : 3200000
 
 
 https://www.w3schools.com/howto
+
+
+https://developers.google.com/places/supported_types
+https://developers.google.com/maps/documentation/javascript/places?hl=id

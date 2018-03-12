@@ -7,23 +7,19 @@
     <label class="item item-input" style="width: 90%">
       <i class="icon ion-android-search placeholder-icon"></i>
       <input ng-model="q" type="text" placeholder="Search food..." data-tap-disabled="true" />
-      <button ng-click="closeq()" class="button button-small button-clear icon ion-android-close" ng-show="q.length" style="color: black; background-color: #fff; font-size: 11px;"></button>
+      <button ng-click="q = ''" class="button button-small button-clear icon ion-android-close" ng-show="q.length" style="color: black; background-color: #fff; font-size: 11px;"></button>
     </label>
     <button ng-click="closeq()" class="button button-icon icon ion-android-funnel"></button>
   </div>
   <ion-content>
     <div id="mapfood">
     </div>
-    <div>
-      <ion-tabs class="tabs-top tabs-striped"><!-- tabs-top tabs-striped -->
-        <ion-tab title="Nearby" class="positive">
-          <ion-nav-view name="tab-problems">
-            <ion-view>
-              <ion-content on-scroll="getScrollPosition()">
-                <ion-refresher on-refresh="doRefresh()"
-                         pulling-text="Pull to refresh..."
-                         refreshing-text="Refreshing..."
-                         refreshing-icon="ion-loading-c">
+    <div >
+     <ion-content on-scroll="getScrollPosition()" style="margin-top: 5%">
+       <ion-refresher on-refresh="doRefresh()"
+                pulling-text="Pull to refresh..."
+                refreshing-text="Refreshing..."
+                refreshing-icon="ion-loading-c">
                          
                 </ion-refresher>
                 <div ng-repeat="d in place | filter:q as name" class="card" align="center" style="margin-bottom: 10px;">
@@ -64,94 +60,14 @@
                 <ion-infinite-scroll ng-if="noMoreItemsAvailable" on-infinite="loadMore()" distance="451px" > </ion-infinite-scroll>
               </ion-content>
 
-              <div class="button button-float energized-bg" ng-show="sttButton" ng-click="scrollToTop()" >
-                <span class="height-fix">
-                  <a class="content">
-                    <i class="ion-ios-arrow-up"> </i>
-                  </a>
-                </span>
-              </div>
-            </ion-view>
-          </ion-nav-view>
-        </ion-tab>
-
-        <ion-tab title="Popular" class="positive">
-          <ion-nav-view name="tab-ok">
-            <ion-view view-title="Injoignable">
-              <ion-content class="" style="background-color: #F4F6F6">
-                <!-- <ion-slides align='center' style="height: 30%; margin-top: 10%" options="options" slider="data.slider" does-continue="true">
-                  <ion-slide-page ng-repeat="slides in slide">
-                      <div class="box {{slides.background}}">
-                        <img  ng-src="{{slides.face}}" class="imgBg" style="width: 100%">
-                      </div>
-                    </ion-slide-page>
-                </ion-slides> -->
-                <div style="margin-top: 20px;">
-                  <h4>Trading</h4>
-                  <div class="slideContainerfood" >
-                    <div class="slidefood" ng-repeat="d in data" style="width: 40%;margin: 5px;">
-                      <div class="box" align="center">
-                        <img  ng-src="{{d.bg}}" class="imgBg" style="width: 100%; border-radius: 6px;">
-                      </div>
-                      <span>{{d.title}}</span>
-                    </div>
-                  </div>
-                  <h4>Category</h4>
-                  <div class="slideContainerfood" >
-                    <div class="slidefood" ng-repeat="d in category" style="width: 25%; height:50px; margin: 5px;">
-                      <div class="box" style="border:1px solid #d0d0d0;">
-                        <!-- <img  ng-src="{{d.bg}}" class="imgBg" style="width: 100%; border-radius: 6px;"> -->
-                        <span>{{d.title}}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row" align="center">
-                    <div class="col card" style="margin: 5px;">
-                      <div class="item item-body " >
-                        <i class="icon ion-ribbon-b" style="font-size: 34px; color: #FFC300;"></i>
-                      </div>
-                      <span>Promotion</span>
-                    </div>
-                    <div class="col card" style="margin: 5px;">
-                      <div class="item item-body">
-                        <i class="icon ion-thumbsup" style="font-size: 34px; color: #FFC300;"></i>
-                      </div>
-                    <span> Best Seller</span>
-                    </div>
-                    <div class="col card" style="margin: 5px;">
-                      <div class="item item-body">
-                        <i class="icon ion-heart" style="font-size: 34px; color: #FFC300;"></i>
-                      </div>
-                      <span> Most Loved </span>
-                  </div>
-                  </div>
-                  <div class="row" align="center">
-                    <div class="col card" style="margin: 5px;">4</div>
-                    <div class="col card" style="margin: 5px;">5</div>
-                    <div class="col card" style="margin: 5px;">6</div>
-                  </div>
-                  <div class="row" align="center">
-                    <div class="col card" style="margin: 5px;">7</div>
-                    <div class="col card" style="margin: 5px;">8</div>
-                    <div class="col card" style="margin: 5px;">9</div>
-                  </div>
-                </div>
-              </ion-content>
-            </ion-view>       
-          </ion-nav-view>
-        </ion-tab>
-
-        <ion-tab title="My Recent" class="positive">
-          <ion-nav-view name="tab-ok">
-            <ion-view view-title="En attente">
-              <ion-content class="">
-
-              </ion-content>
-            </ion-view>       
-          </ion-nav-view>
-        </ion-tab>
-      </ion-tabs>
+      <div class="button button-float energized-bg" ng-show="sttButton" ng-click="scrollToTop()" >
+        <span class="height-fix">
+          <a class="content">
+            <i class="ion-ios-arrow-up"> </i>
+          </a>
+        </span>
       </div>
+    </div>
 
   </ion-content>
 </ion-view>
