@@ -14,7 +14,7 @@
           </div>
         </ion-slides>
     
-      <ion-scroll style="height: 25%; padding: 5px; margin-bottom: 0; position: absolute; top: 30%;" overflow-scroll="true"> <!--  -->
+      <ion-scroll style="height: 28%; padding: 5px; margin-bottom: 0; position: absolute; top: 30%;" overflow-scroll="true"> <!--  -->
         <h4 >{{title}}</h4>
         <p>{{address}}</p> 
         <span ng-if="opening.open_now == true" style="color: #9ACD32; border: 1px solid #9ACD32; border-radius: 4px;font-size: 12px; padding: 0 5px 0 5px;">OPEN</span>
@@ -22,7 +22,6 @@
         <strong>{{phone}}</strong> | <a ng-click="toWeb(website)">{{website}}</a>
       </ion-scroll> 
   </ion-content>
-
       
   <ion-content style="top: 45%; z-index: 99999999"> <!-- top: 45%; z-index: -1 -->
         <ion-tabs class="tabs-top"  >
@@ -45,10 +44,10 @@
 
 
             <ion-tab title="Menu" class="positive">
-                <ion-nav-view name="tab-tab2" >
+                <ion-nav-view name="tab-tab2">
                     <ion-content class="center">
                         <dir class="col">
-                          <button class="button button-block button-positive" ng-click="">Sarankan</button>
+                          <button class="button button-block button-positive" ng-click="sarankan()">Sarankan</button>
                           <button class="button button-block button-positive" ng-click="">Order Manual</button>
                         </dir>
                     </ion-content>

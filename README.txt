@@ -68,6 +68,48 @@ https://developers.google.com/maps/documentation/geolocation/intro
 https://developers.google.com/maps/documentation/android-api/location#my-location
 
 
+RELASI TABLE
+
+*tabel_admin
+*tabel_ojek/driver
+*tabel_pelanggan/pelanggan
+*tabel_yoride
+
+*tabel_yofood
+-order_no
+-id_driver
+-id_user
+-id_toko
+-menu
+-qty
+-harga
+
+
+*tabel_setting
+*tabel_toko
+-id_toko
+-nama_toko
+-menu_id
+-alamat
+-harga
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // styles: [
       //       {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
       //       {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
