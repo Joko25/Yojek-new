@@ -64,14 +64,22 @@
             <i class="icon ion-android-home"  style="font-size: 20px;"></i>
             Home
           </ion-item>
+           <ion-item class="item-icon-left" menu-close>
+            <i class="icon ion-card" style="font-size: 20px;"></i>
+            YORI Pay
+          </ion-item>
+          <ion-item class="item-icon-left" menu-close>
+            <i class="icon ion-ribbon-a" style="font-size: 20px;"></i>
+            YORIwards
+            <span class="badge badge-assertive">{{userData.point}} pts</span>
+          </ion-item>
           <ion-item class="item-icon-left" menu-close>
             <i class="icon ion-android-notifications-none" style="font-size: 20px;"></i>
             Notification
           </ion-item>
-          <ion-item class="item-icon-left" menu-close>
-            <i class="icon ion-ribbon-a" style="font-size: 20px;"></i>
-            Yo-Point
-            <span class="badge badge-assertive">{{userData.point}} pts</span>
+          <ion-item class="item-icon-left" ng-click="OtherShare()">
+            <i class="icon ion-android-share-alt" style="font-size: 20px;"></i>
+            Share
           </ion-item>
           <ion-item class="item-icon-left" menu-close>
             <i class="icon icon-small ion-ios-information-outline" style="font-size: 20px;"></i>

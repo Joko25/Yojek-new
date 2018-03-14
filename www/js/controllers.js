@@ -25,6 +25,11 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout, $window, $stat
     $scope.initimg = name.substr(0, 1);
   }
 
+  $scope.OtherShare = function(){
+    console.log('ahay');
+    window.plugins.socialsharing.share('Ayo Gabung dengan Yori!', null, null, 'Link yori');
+  }
+
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope

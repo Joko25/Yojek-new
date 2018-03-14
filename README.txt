@@ -67,6 +67,10 @@ https://developers.google.com/maps/documentation/geolocation/intro
 
 https://developers.google.com/maps/documentation/android-api/location#my-location
 
+**for sharing button
+http://technotip.com/4809/social-sharing-plugin-ionic-app/
+https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
+https://www.thepolyglotdeveloper.com/2014/10/implement-social-media-sharing-ionicframework/
 
 RELASI TABLE
 
