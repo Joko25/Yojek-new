@@ -27,6 +27,8 @@ https://developers.google.com/maps/documentation/javascript/examples/directions-
 
 https://www.joshmorony.com/category/ionic-tutorials/page/10/
 
+https://www.tutorialspoint.com/materialdesignlite/index.htm
+
 ##FIREBASE
 https://console.firebase.google.com/u/0/?pli=1
 https://www.airpair.com/angularjs/posts/build-a-real-time-hybrid-app-with-ionic-firebase
