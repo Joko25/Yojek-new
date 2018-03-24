@@ -94,6 +94,26 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     })
 
+  .state('app.yopay', {
+      url: '/yopay',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/yopay.html',
+          controller: 'yopayCtrl'
+        }
+      }
+    })
+
+  .state('app.yopoin', {
+      url: '/yopoin',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/yopoin.html',
+          controller: 'yopoinCtrl'
+        }
+      }
+    })
+
   .state('app.yofood_view', {
       url: '/yofood_view',
       views: {

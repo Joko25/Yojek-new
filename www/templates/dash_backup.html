@@ -1,0 +1,82 @@
+<ion-view> <!-- class="bgdash" -->
+	<ion-nav-title>
+
+     YOJEK
+     <!-- 
+    <img class="title-image" src="img/lg.png" width="40%" style="margin-top: 2%" /> -->
+    </ion-nav-title>
+    <!-- <div class="bar bar-subheader bar-energized" align="center">
+	    <span></span>
+	</div> -->
+<ion-content align="center" scroll="false" style="background-color: #ECE7E7">
+
+	<!-- <ion-nav-title align-title="center">
+	</ion-nav-bar> -->
+    <!-- <div id="map" data-tap-disabled="true"></div> -->
+
+    <ion-slides align='center' style="height: 32%;" options="options" slider="data.slider" does-continue="true">
+    	<ion-slide-page ng-repeat="slides in slide">
+        	<div class="box" style="background-image: url('{{slides.background}}'); background-size: 100%;">
+                <!-- <img  ng-src="{{slides.face}}" class="imglogo" style="margin-top: 20%; width: 10%"> -->
+                <!-- <h3>{{slides.title}}</h3>
+                <p>{{slides.desc}}</p> -->
+            </div>
+        </ion-slide-page>
+    </ion-slides>
+
+    <div class="row">
+	  	<div class="col col-45">
+	  		<!-- <button class="button button-full button-energized icon-left ion-android-bicycle" ng-click="yoRide()">YO-RIDE</button> -->
+			<div class="card" align="center" ng-click="yoRide()">
+		  		<div class="item item-body " >					
+		  			<img class="full-image" src="img/yoride.png" style="width: 40%;">
+					<!-- <i class="icon ion-android-bicycle" style="width: 100%"></i> -->
+				</div>
+				<h4>YO-RIDE</h4>
+	  		</div>
+		</div>
+	  	<div class="col col-45">
+	  		<div class="card" align="center" ng-click="yoGood()">
+		  		<div class="item item-body " >
+					<img class="full-image" src="img/yogoods.png" style="width: 40%;">
+					<!-- <i class="icon ion-cube" style="width: 100%"></i> -->
+				</div>
+				<h4>YO-GOODS</h4>
+	  			
+	  		</div>
+    		<!-- <button class="button button-full button-energized icon-left ion-cube" ng-click="yoGood()">YO-GOODS</button> -->
+	 	</div>
+		<!-- <div class="col">.col</div> -->
+	</div>
+	<div class="row">
+		<div class="col col-45">
+			<!-- <button class="button button-full button-energized icon-left ion-android-restaurant" ng-click="yoFood()">YO-FOOD</button> -->
+
+	  		<div class="card" align="center" ng-click="yoFood()">
+		  		<div class="item item-body " >
+					<img class="full-image" src="img/yofood.png" style="width: 40%;">
+					<!-- <i class="icon ion-android-restaurant" style="width: 100%"></i> -->
+				</div>
+				<h4>YO-FOOD</h4>
+	  			
+	  		</div>
+	 	</div>
+	 	<!-- <div class="col col-05"></div> -->
+	  	<div class="col col-45">
+	  		<!-- <button class="button button-full button-energized icon-left ion-android-cart" ng-click="yoMart()">YO-MART</button> -->
+	  		<div class="card" align="center" ng-click="yoMart()">
+		  		<div class="item item-body " >
+					<img class="full-image" src="img/yomart.png" style="width: 40%;">
+					<!-- <i class="icon ion-android-cart" style="width: 100%"></i> -->
+				</div>
+				<h4>YO-MART</h4>
+	  			
+	  		</div>
+	 	</div>
+	  <!-- <div class="col">.col</div> -->
+	</div>
+</ion-content>
+<div align="center" class="bar bar-footer bar-light" style="background-color: #F4F6F6">
+	<span class="title" id="Fontfooter">Copyright © YOJEK 2018</span>
+</div>
+</ion-view>

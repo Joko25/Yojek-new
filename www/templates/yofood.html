@@ -13,7 +13,7 @@
     </label>
     <!-- <button ng-click="closeq()" class="button button-icon icon ion-android-funnel"></button> -->
   </div>
-  <ion-content style="background-color: #F4F6F6">
+  <ion-content style="background-color: #ECE7E7">
     <div id="mapfood">
     </div>
       <div>
@@ -34,59 +34,55 @@
           </div>
         </div>
 
-        <div style="margin: 0 5px 0 5px;">
-          <span style="font-size: 16px">Category</span>
-          <div class="slideContainerfood" style="margin-bottom: 15px">
+        
+          <!-- <hr/>-->
+
+        <div style="width:100%;" align="center">
+            <div ng-click="linkfood('promotion')" style="padding:5% 0 5% 0; width:34%; float:left;border:1px solid #d0d0d0; border-left: none; border-top: none; background-color: #F0EFEF;">
+              <i class="icon ion-ribbon-b positive" style="font-size: 28px"></i><br>
+              Promotion
+            </div>
+            <div ng-click="linkfood('bestseller')" class="col" style="padding:5% 0 5% 0; width:33%; float:left; border:1px solid #d0d0d0; border-right: none; border-top: none; border-left: none;background-color: #F0EFEF;">
+              <i class="icon ion-thumbsup positive" style="font-size: 28px"></i><br>Best Seller
+            </div>
+            <div ng-click="linkfood('mostloved')" class="col" style="padding:5% 0 5% 0; width:33%; float:left; border:1px solid #d0d0d0; border-right: none; border-top: none;background-color: #F0EFEF;">
+              <i class="icon ion-heart positive" style="font-size: 28px"></i><br>Most Loved
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+          <div style="width:100%;" align="center">
+            <div ng-click="linkfood('nearme')" style="padding:5% 0 5% 0; width:34%; float:left;border:1px solid #d0d0d0; border-left: none; border-top: none; background-color: #F0EFEF;">
+              <i class="icon ion-android-compass positive" style="font-size: 28px"></i><br>
+              Near Me
+            </div>
+            <div ng-click="linkfood('newfood')" class="col" style="padding:5% 0 5% 0; width:33%; float:left; border:1px solid #d0d0d0; border-right: none; border-top: none; border-left: none;background-color: #F0EFEF;">
+              <i class="icon ion-fork positive" style="font-size: 28px"></i>
+              <i class="icon ion-spoon positive" style="font-size: 28px"></i><br>New on Yofood
+            </div>
+            <div ng-click="linkfood('24hours')" class="col" style="padding:5% 0 5% 0; width:33%; float:left; border:1px solid #d0d0d0; border-right: none; border-top: none;background-color: #F0EFEF;">
+              <i class="icon ion-person-stalker balanced" style="font-size: 28px"></i><br>Be Partner
+            </div>
+            <div style="clear: both;"></div>
+          </div>
+
+        <div style="margin-top: 10px;">
+          <span style="font-size: 16px; padding: 10px 0 10px 5px;">Category</span>
+          <div class="list">
+            <a style="background-color: #F0EFEF;" ng-repeat="d in category" class="item item-icon-left item-icon-right">
+              <i class="icon {{d.bg}} energized" style="font-size: 25px;"></i>
+              {{d.title}}
+              <i class="icon ion-chevron-right" style="font-size: 15px; color: #d0d0d0"></i>
+            </a>
+          </div>
+          <!-- <div class="slideContainerfood" style="margin-bottom: 15px">
             <div class="slidefood" align="center" ng-repeat="d in category" style="width: 25%; height:50px; margin: 2px;">
-              <div class="box"  style="width:60%;border: 1px solid #d0d0d0; border-radius: 20px; background-color: #fff;padding-top: 5px"> <!-- -->
+              <div class="box"  style="width:60%;border: 1px solid #d0d0d0; border-radius: 20px; background-color: #fff;padding-top: 5px"> 
                 <i class="icon {{d.bg}}" style="font-size: 34px; color: #FFC300;"></i>
               </div>
                 <span>{{d.title}}</span>
             </div>
-          </div>
+          </div> -->
         </div>
-          <!-- <hr/>-->
-
-          <div class="row" align="center">
-            <div class="col card" style="margin: 5px;" ng-click="linkfood('promotion')">
-              <div class="item item-body " >
-                <i class="icon ion-ribbon-b" style="font-size: 34px; color: #FFC300;"></i>
-              </div>
-              <span>Promotion</span>
-            </div>
-            <div class="col card" style="margin: 5px;" ng-click="linkfood('bestseller')">
-              <div class="item item-body">
-                <i class="icon ion-thumbsup" style="font-size: 34px; color: #FFC300;"></i>
-              </div>
-              <span>Best Seller</span>
-            </div>
-            <div class="col card" style="margin: 5px;" ng-click="linkfood('mostloved')">
-              <div class="item item-body">
-                <i class="icon ion-heart" style="font-size: 34px; color: #FFC300;"></i>
-              </div>
-              <span>Most Loved </span>
-            </div>
-          </div>
-          <div class="row" align="center">
-            <div class="col card" style="margin: 5px;" ng-click="linkfood('nearme')">
-              <div class="item item-body " >
-                <i class="icon ion-android-compass" style="font-size: 34px; color: #FFC300;"></i>
-              </div>
-              <span>Near Me</span>
-            </div>
-            <div class="col card" style="margin: 5px;" ng-click="linkfood('newfood')">
-              <div class="item item-body">
-                <i class="icon ion-fork" style="font-size: 34px; color: #FFC300;"></i> <i class="icon ion-spoon" style="font-size: 34px; color: #FFC300;"></i>
-              </div>
-              <span>New on Yofood</span>
-            </div>
-            <div class="col card" style="margin: 5px;" ng-click="linkfood('24hours')">
-              <div class="item item-body">
-                <i class="icon ion-clock" style="font-size: 34px; color: #FFC300;"></i>
-              </div>
-              <span>24 Hours</span>
-            </div>
-          </div>
               
       </div>
 
